@@ -8,7 +8,7 @@ export const Container = styled.div`
 export const Body = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 16px;
   background-color: #ffffff;
   padding: 24px;
   border-radius: 32px;
