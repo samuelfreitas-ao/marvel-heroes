@@ -1,7 +1,23 @@
+import { Header } from '../../components'
+import { Body, Container, Item, List, Title } from './styled'
+
 export function Home() {
   return (
-    <div>
-      <h1>Título</h1>
-    </div>
+    <Container>
+      <Header />
+      <Body>
+        <Title>Personagens</Title>
+        <List>
+          <Item>Ola</Item>
+          <Item>Ola</Item>
+          <Item>Ola</Item>
+          <Item>Ola</Item>
+          <Item>Ola</Item>
+          <Item>Ola</Item>
+          <Item>Ola</Item>
+          <Item>Ola</Item>
+        </List>
+      </Body>
+    </Container>
   )
 }
