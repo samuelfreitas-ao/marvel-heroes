@@ -1,3 +1,5 @@
 export * from './header'
 export * from './icons'
+export * from './loading'
+export * from './spinner'
 export * from './search'
