@@ -2,17 +2,25 @@ import { styled } from 'styled-components'
 
 export const List = styled.ul`
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-gap: 16px;
   list-style: none;
   padding: 0;
 
   @media (max-width: 1200px) {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 
-  @media (max-width: 900px) {
-    grid-template-columns: repeat(4, 1fr);
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 576px) {
+    grid-template-columns: repeat(1, 1fr);
   }
 `
 export const Item = styled.li`
@@ -25,6 +33,7 @@ export const Item = styled.li`
 `
 export const ItemImage = styled.img<{ unavailable?: string }>`
   opacity: ${(props) => (props?.unavailable ? 0.6 : 0.8)};
+  width: 100%;
 `
 export const ItemTitle = styled.div`
   background-color: rgba(90, 126, 118, 0.8);

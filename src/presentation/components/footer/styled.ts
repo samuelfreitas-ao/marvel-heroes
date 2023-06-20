@@ -13,6 +13,10 @@ export const Container = styled.footer`
   & a {
     color: #ffffff;
   }
+
+  @media (max-width: 576px) {
+    flex-direction: column;
+  }
 `
 export const SocialList = styled.ul`
   padding: 0;
