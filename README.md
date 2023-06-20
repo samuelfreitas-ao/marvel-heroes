@@ -28,7 +28,7 @@ Acede Link do deploy: https://marvel-heroes-samuel.vercel.app
 git clone https://github.com/samuelfreitas-ao/marvel-heroes
 ```
 
-- Instale as dependências: 
+- Acede a pasta do projecto e instale as dependências: 
 ```
 npm install
 ```
@@ -39,13 +39,4 @@ npm install
 ```
 npm run dev
 ``` 
-Aceder pelo navegador o endereço: http://localhost:5173
-
-Para baixar e executar o backend [siga essas instruções](https://github.com/devincubadora/trybu-api).
-
-## Acesso ao app
-
-Acesse o app:
-
-- Baixando a apk [clicando aqui](https://www.mediafire.com/file/t4wtinzs4sder6g/Trybu.apk/file). Credenciais: user: admin | senha: admin
-- [Asistindo o vídeo de apresentação do app](https://youtu.be/0yPdtSVUaBI)
+- Aceder pelo navegador o endereço: http://localhost:5173
