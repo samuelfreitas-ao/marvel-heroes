@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 import { Header } from '../../components'
 import { HeroList } from './components'
@@ -13,19 +13,24 @@ type HomeProps = {
 export function Home({ loadHeroes }: HomeProps) {
   const [heroes, setHeroes] = useState<Heroe[]>([])
 
-  useEffect(() => {
-    fetchHeroes()
-  }, [])
-
-  const fetchHeroes = async () => {
+  const fetchHeroes = useCallback(async () => {
     try {
       const httpResponse = await loadHeroes.loadAll()
-
-      console.log('httpResponse', httpResponse)
+      setHeroes(httpResponse)
     } catch (error) {
       console.log('Error', error)
     }
-  }
+  }, [])
+
+  useEffect(() => {
+    let loaded = true
+    if (loaded) {
+      fetchHeroes()
+    }
+    return () => {
+      loaded = false
+    }
+  }, [])
 
   return (
     <Container>
