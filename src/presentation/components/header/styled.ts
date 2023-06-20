@@ -9,7 +9,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 200px;
+  min-height: 300px;
   padding: 24px;
   padding-bottom: 64px;
 `
