@@ -1,7 +1,5 @@
 # Marvel Heroes
 
-
-
 <img src="./.github/preview.png">
 <br />
 <br />
