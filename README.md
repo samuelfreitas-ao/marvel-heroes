@@ -15,7 +15,7 @@ Esse projecto foi desenvolvido com as seguintes tecnologias:
 - [Typescript](https://www.typescriptlang.org/)
 - [ReactJs](https://react.dev)
 - [Styled components](https://styled-components.com/)
-
+- [Figma] ()
 #
 
 ## Aplicação em produção
@@ -39,4 +39,4 @@ npm install
 ```
 npm run dev
 ``` 
-- Aceder pelo navegador o endereço: http://localhost:5173
+- Agora basta aceder pelo navegador o endereço: http://localhost:5173 e já está 😉.
