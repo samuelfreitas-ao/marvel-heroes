@@ -18,11 +18,12 @@ export const InputContent = styled.div`
   background-color: rgba(0, 0, 0, 0.8);
 `
 export const Input = styled.input`
+  flex: 1;
+  background-color: transparent;
+  font-size: 24px;
+  color: #999999;
   outline: none;
   border: 0;
-  background-color: transparent;
-  color: #999999;
-  font-size: 24px;
   &::placeholder {
     color: #999999;
     font-weight: normal;
