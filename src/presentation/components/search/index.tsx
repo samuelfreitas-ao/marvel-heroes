@@ -1,5 +1,6 @@
 import { ReactNode } from 'react'
-import { Container, Input, Button } from './styled'
+import { Container, Input, Button, InputContent } from './styled'
+import { IconSearch } from '..'
 
 type SearchHeroesProps = {
   children: ReactNode
@@ -7,8 +8,12 @@ type SearchHeroesProps = {
 export const SearchHeroes = () => {
   return (
     <Container>
-      <Input />
-      <Button>Submetere</Button>
+      <InputContent>
+        <Button>
+          <IconSearch size={24} />
+        </Button>
+        <Input placeholder="Pesquisar heróis" />
+      </InputContent>
     </Container>
   )
 }

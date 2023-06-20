@@ -2,20 +2,39 @@ import { styled } from 'styled-components'
 
 export const Container = styled.div`
   display: flex;
+  width: 100%;
+  padding: 32px;
   align-items: center;
   justify-content: center;
+  background-color: rgba(255, 255, 255, 0.5);
+`
+export const InputContent = styled.div`
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+  padding: 8px 16px;
+  border-radius: 16px;
+  background-color: rgba(0, 0, 0, 0.8);
 `
 export const Input = styled.input`
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  outline: none;
+  border: 0;
+  background-color: transparent;
+  color: #999999;
+  font-size: 24px;
+  &::placeholder {
+    color: #999999;
+    font-weight: normal;
+  }
 `
 export const Button = styled.button`
-  background-color: #007bff;
-  color: #fff;
-  padding: 10px 20px;
   border: none;
+  background-color: transparent;
   border-radius: 4px;
+  color: #999999;
+  font-size: 24px;
+  display: flex;
+  padding: 4px;
   cursor: pointer;
-  margin-left: 10px;
 `
