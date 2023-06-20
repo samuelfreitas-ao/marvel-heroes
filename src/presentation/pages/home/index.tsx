@@ -20,7 +20,7 @@ export function Home({ loadHeroes }: HomeProps) {
     } catch (error) {
       console.log('Error', error)
     }
-  }, [])
+	}, [loadHeroes])
 
   useEffect(() => {
     let loaded = true
@@ -30,7 +30,7 @@ export function Home({ loadHeroes }: HomeProps) {
     return () => {
       loaded = false
     }
-  }, [])
+	}, [fetchHeroes])
 
   return (
     <Container>
