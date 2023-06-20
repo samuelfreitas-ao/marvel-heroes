@@ -7,8 +7,6 @@ import {
 } from '../../data/protocols/http'
 
 export class AxiosHttpClient implements HttpClient {
-  constructor() {}
-
   async request(data: HttpRequest): Promise<HttpResponse> {
     let axiosResponse: AxiosResponse
     try {
