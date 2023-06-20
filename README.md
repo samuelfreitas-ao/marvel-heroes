@@ -1,7 +1,5 @@
 # Marvel Heroes
 
-
-
 <img src="./.github/preview.png">
 <br />
 <br />
@@ -15,11 +13,16 @@ Esse projecto foi desenvolvido com as seguintes tecnologias:
 - [Typescript](https://www.typescriptlang.org/)
 - [ReactJs](https://react.dev)
 - [Styled components](https://styled-components.com/)
-- [Figma] ()
+- [Figma](https://www.figma.com/)
 #
 
-## Aplicação em produção
-Acede Link do deploy: https://marvel-heroes-samuel.vercel.app
+## ◀️ Aplicação em produção
+- Acede o link do deploy: https://marvel-heroes-samuel.vercel.app
+
+
+## 🖌️ Layout do projecto no Figma
+- [Aceder o layout aqui](https://www.figma.com/file/pCC3rcX8rC7y2I0s7LT9WN/Marvel-heroes?type=design&t=LZ6fyOm8sUxojPBA-0)
+
 
 ## Como baixar/executar o projecto em sua máquina
 
