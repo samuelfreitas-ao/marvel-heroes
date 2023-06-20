@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 
-import { Header, Loading, Spinner } from '../../components'
+import { Footer, Header, Loading, Spinner } from '../../components'
 import { HeroList } from './components'
 import { Body, Container, Title } from './styled'
 import { Heroe } from '../../../domain/models'
@@ -44,6 +44,7 @@ export function Home({ loadHeroes }: HomeProps) {
 					<HeroList heroes={heroes} />
 				}
 			</Body>
+			<Footer />
 		</Container>
 	)
 }
