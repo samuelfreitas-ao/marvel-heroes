@@ -1,12 +1,10 @@
-import { Banner, SearchHeroes } from '..'
+import { SearchHeroes } from '..'
 import { Container } from './styled'
 
 export function Header() {
   return (
     <Container>
-      <Banner>
-        <SearchHeroes />
-      </Banner>
+      <SearchHeroes />
     </Container>
   )
 }
