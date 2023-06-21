@@ -21,4 +21,19 @@ export const GlobalStyle = createGlobalStyle`
 		max-width: 100%;
   	max-height: 100%;
 	}
+	
+	button{
+		border: none;
+		padding: 8px 12px;
+		font-size: 14px;
+		cursor: pointer;
+		
+		& *{
+			font-size: 14px;
+		}
+		
+		&:hover{
+			opacity: 0.8;
+		}
+	}
 `
