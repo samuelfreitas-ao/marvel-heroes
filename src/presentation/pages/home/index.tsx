@@ -26,14 +26,8 @@ export function Home({ loadHeroes }: HomeProps) {
 	}, [loadHeroes])
 
 	useEffect(() => {
-		let loaded = true
-		if (loaded) {
-			fetchHeroes()
-		}
-		return () => {
-			loaded = false
-		}
-	}, [fetchHeroes])
+    fetchHeroes()
+  }, [fetchHeroes])
 
 	return (
 		<Container>
