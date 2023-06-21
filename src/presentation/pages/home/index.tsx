@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 
-import { Footer, Header, Loading, Spinner } from '../../components'
-import { HeroList } from './components'
+import { Footer, Header, HeroList, Loading, Spinner } from '../../components'
 import { Body, Container, Title } from './styled'
 import { Heroe } from '../../../domain/models'
 import { LoadHeroes } from '../../../domain/usecases'

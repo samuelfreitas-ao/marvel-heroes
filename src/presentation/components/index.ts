@@ -1,5 +1,7 @@
 export * from './footer'
 export * from './header'
+export * from './hero-item'
+export * from './hero-list'
 export * from './icons'
 export * from './loading'
 export * from './spinner'
