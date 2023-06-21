@@ -28,7 +28,7 @@ Esse projecto foi desenvolvido com as seguintes tecnologias:
 
 - Baixe/clone o projecto executando o comando 
 ```
-git clone https://github.com/samuelfreitas-ao/marvel-heroes
+git clone https://github.com/samuelfreitas-ao/marvel-heroes-web.git
 ```
 
 - Acede a pasta do projecto e instale as dependências: 
