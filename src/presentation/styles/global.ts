@@ -7,9 +7,7 @@ export const GlobalStyle = createGlobalStyle`
 	}
 
 	body{
-		background-color: #6F6969;
-		max-width: 1530px;
-		margin: auto;
+		background-color: #444;
 	}
 
 	:not(h1, h2, h3, strong, b){
