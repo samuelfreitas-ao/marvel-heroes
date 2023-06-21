@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 
-import { Footer, Header, HeroList, Loading, Spinner } from '../../components'
+import { Error, Footer, Header, HeroList, Loading, Spinner } from '../../components'
 import { Body, Container, Title } from './styled'
 import { Heroe } from '../../../domain/models'
 import { LoadHeroes } from '../../../domain/usecases'
@@ -12,13 +12,14 @@ type HomeProps = {
 export function Home({ loadHeroes }: HomeProps) {
 	const [heroes, setHeroes] = useState<Heroe[]>([])
 	const [isLoding, setIsLoading] = useState(true)
+	const [error, setError] = useState()
 
 	const fetchHeroes = useCallback(async () => {
 		try {
 			const httpResponse = await loadHeroes.loadAll()
 			setHeroes(httpResponse)
-		} catch (error) {
-			console.log('Error', error)
+		} catch (error: any) {
+			setError(error.message)
 		} finally {
 			setIsLoading(false)
 		}
@@ -35,6 +36,8 @@ export function Home({ loadHeroes }: HomeProps) {
 				<Title>Personagens {isLoding && <Spinner />}</Title>
 				{isLoding ? (
 					<Loading data="Carregando personagens..." />
+				) : error ? (
+					<Error message={error} />
 				) : (
 					<HeroList heroes={heroes} />
 				)}
