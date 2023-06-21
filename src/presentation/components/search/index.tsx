@@ -25,7 +25,7 @@ export const SearchHeroes = () => {
 				<Button>
 					<IconSearch size={24} />
 				</Button>
-				<Input placeholder="Pesquisar heróis" onChange={handleInputChange} />
+				<Input placeholder="Pesquisar heróis da Marvel..." onChange={handleInputChange} />
 			</FormContent>
 		</Container>
 	)
