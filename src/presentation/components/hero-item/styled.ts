@@ -5,6 +5,8 @@ export const Item = styled.li`
 	display: flex;
 	min-height: 100px;
 	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+	cursor: pointer;
+
 	&:hover {
 		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 	}
