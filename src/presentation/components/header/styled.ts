@@ -2,7 +2,7 @@ import { styled } from 'styled-components'
 
 import banner from '../../../assets/images/Banner.png'
 
-export const Container = styled.div`
+export const Container = styled.header`
   background-image: url(${banner});
   background-repeat: no-repeat;
   background-size: cover;
