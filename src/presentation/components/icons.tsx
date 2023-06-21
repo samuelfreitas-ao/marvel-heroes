@@ -5,10 +5,12 @@ import {
 	IoLogoGithub,
 	IoLogoLinkedin,
 	IoLogoWhatsapp,
-	IoMdSearch
+	IoMdSearch,
+	IoMdHome
 } from 'react-icons/io'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 
+export const IconHome = (props: IconBaseProps) => <IoMdHome {...props} />
 export const IconSearch = (props: IconBaseProps) => <IoMdSearch {...props} />
 export const IconSpinner = (props: IconBaseProps) => (
 	<AiOutlineLoading3Quarters {...props} />
