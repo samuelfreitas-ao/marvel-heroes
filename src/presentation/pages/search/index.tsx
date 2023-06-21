@@ -52,7 +52,7 @@ export function Search({ loadHeroes }: SearchProps) {
 	return (
 		<Layout title="Pesquisa | Marvel Heroes">
 			<LayoutBody>
-				<Title>
+				<Title backTo="/">
 					Pesquisa: {query} {isLoding && <Spinner />}
 				</Title>
 				{isLoding ? (
