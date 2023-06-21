@@ -9,7 +9,9 @@ import {
 	IoMdHome
 } from 'react-icons/io'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
+import { BiArrowBack } from 'react-icons/bi'
 
+export const IconBack = (props: IconBaseProps) => <BiArrowBack {...props} />
 export const IconHome = (props: IconBaseProps) => <IoMdHome {...props} />
 export const IconSearch = (props: IconBaseProps) => <IoMdSearch {...props} />
 export const IconSpinner = (props: IconBaseProps) => (

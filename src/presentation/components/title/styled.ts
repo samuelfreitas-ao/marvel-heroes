@@ -7,3 +7,8 @@ export const Container = styled.h1`
 	text-align: center;
 	font-weight: 500;
 `
+export const Button = styled.button`
+	background-color: #444;
+	color: #ffffff;
+	border-radius: 8px;
+`

@@ -1,8 +1,28 @@
-import { ReactNode } from 'react'
-import { Container } from './styled'
+import { ReactNode, useCallback } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-type TitleProps = { children: ReactNode }
+import { Button, Container } from './styled'
+import { IconBack } from '..'
 
-export function Title({ children }: TitleProps) {
-	return <Container>{children}</Container>
+type TitleProps = { children: ReactNode; backTo?: string }
+
+export function Title({ children, backTo }: TitleProps) {
+	const navigate = useNavigate()
+
+	const handleBackHome = useCallback(() => {
+		navigate('/')
+	}, [navigate])
+
+	return (
+		<>
+			<Container>{children}</Container>
+			{backTo && (
+				<div>
+					<Button onClick={handleBackHome}>
+						<IconBack /> Home
+					</Button>
+				</div>
+			)}
+		</>
+	)
 }
