@@ -12,7 +12,7 @@ export const Container = styled.div`
 		padding: 16px;
 	}
 `
-export const InputContent = styled.div`
+export const FormContent = styled.form`
 	display: flex;
 	gap: 8px;
 	align-items: center;
