@@ -6,6 +6,7 @@ export function AppRoutes() {
 		<BrowserRouter>
 			<Routes>
 				<Route path="/" Component={makeHome}></Route>
+				<Route path="/search" Component={makeSearch}></Route>
 				<Route path="/search/:query" Component={makeSearch}></Route>
 			</Routes>
 		</BrowserRouter>

@@ -35,8 +35,12 @@ export function Search({ loadHeroes }: SearchProps) {
 	}, [loadHeroes, query])
 
 	useEffect(() => {
-		fetchHeroes()
-	}, [fetchHeroes])
+		if (query) {
+			fetchHeroes()
+		} else {
+			setIsLoading(false)
+		}
+	}, [fetchHeroes, query])
 
 	return (
 		<Layout title="Pesquisa | Marvel Heroes">
@@ -49,7 +53,13 @@ export function Search({ loadHeroes }: SearchProps) {
 				) : error ? (
 					<Error message={error} />
 				) : heroes.length < 1 ? (
-					<div>Nenhum resultado da pesquisa</div>
+					<div>
+						{query ? (
+							'Nenhum resultado da pesquisa'
+						) : (
+							<Error message="Você não informou um termo de pesquisa" />
+						)}
+					</div>
 				) : (
 					<HeroList heroes={heroes} />
 				)}
