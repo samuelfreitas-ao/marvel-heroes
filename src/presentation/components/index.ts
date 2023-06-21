@@ -1,6 +1,7 @@
 export * from './error'
 export * from './footer'
 export * from './header'
+export * from './hero-detail'
 export * from './hero-item'
 export * from './hero-list'
 export * from './icons'
