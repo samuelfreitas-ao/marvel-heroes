@@ -4,8 +4,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 `
-
-export const Body = styled.div`
+export const Body = styled.main`
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -16,7 +15,6 @@ export const Body = styled.div`
   margin-left: 24px;
   margin-right: 24px;
 `
-
 export const Title = styled.div`
   background-color: #363838;
   color: #ffffff;
