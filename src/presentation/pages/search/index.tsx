@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { Error, Footer, Header, HeroList, Loading, Spinner } from '../../components'
+import { Error, HeroList, Layout, LayoutBody, Loading, Spinner } from '../../components'
 import { Heroe } from '../../../domain/models'
 import { LoadHeroes } from '../../../domain/usecases'
-import { Body, Container, Title } from './styled'
+import { Title } from './styled'
 
 type SearchProps = {
 	loadHeroes: LoadHeroes
@@ -39,9 +39,8 @@ export function Search({ loadHeroes }: SearchProps) {
 	}, [fetchHeroes])
 
 	return (
-		<Container>
-			<Header />
-			<Body>
+		<Layout title="Pesquisa | Marvel Heroes">
+			<LayoutBody>
 				<Title>
 					Pesquisa: {query} {isLoding && <Spinner />}
 				</Title>
@@ -54,8 +53,7 @@ export function Search({ loadHeroes }: SearchProps) {
 				) : (
 					<HeroList heroes={heroes} />
 				)}
-			</Body>
-			<Footer />
-		</Container>
+			</LayoutBody>
+		</Layout>
 	)
 }

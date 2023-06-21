@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 
-import { Error, Footer, Header, HeroList, Loading, Spinner } from '../../components'
-import { Body, Container, Title } from './styled'
+import { Error, HeroList, Layout, LayoutBody, Loading, Spinner } from '../../components'
+import { Title } from './styled'
 import { Heroe } from '../../../domain/models'
 import { LoadHeroes } from '../../../domain/usecases'
 
@@ -30,9 +30,8 @@ export function Home({ loadHeroes }: HomeProps) {
 	}, [fetchHeroes])
 
 	return (
-		<Container>
-			<Header />
-			<Body>
+		<Layout>
+			<LayoutBody>
 				<Title>Personagens {isLoding && <Spinner />}</Title>
 				{isLoding ? (
 					<Loading data="Carregando personagens..." />
@@ -41,8 +40,7 @@ export function Home({ loadHeroes }: HomeProps) {
 				) : (
 					<HeroList heroes={heroes} />
 				)}
-			</Body>
-			<Footer />
-		</Container>
+			</LayoutBody>
+		</Layout>
 	)
 }
