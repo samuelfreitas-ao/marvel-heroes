@@ -3,6 +3,9 @@ import { styled } from 'styled-components'
 export const Container = styled.div`
 	display: flex;
 	flex-direction: column;
+	max-width: 1230px;
+	margin: auto;
+	background-color: #363838;
 `
 export const Body = styled.main`
 	display: flex;
