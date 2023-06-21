@@ -1,7 +1,14 @@
 import { useCallback, useEffect, useState } from 'react'
 
-import { Error, HeroList, Layout, LayoutBody, Loading, Spinner } from '../../components'
-import { Title } from './styled'
+import {
+	Error,
+	HeroList,
+	Layout,
+	LayoutBody,
+	Loading,
+	Spinner,
+	Title
+} from '../../components'
 import { Heroe } from '../../../domain/models'
 import { LoadHeroes } from '../../../domain/usecases'
 

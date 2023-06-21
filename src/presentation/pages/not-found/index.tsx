@@ -1,5 +1,5 @@
-import { Layout, LayoutBody } from '../../components'
-import { Container, Title } from './styled'
+import { Layout, LayoutBody, Title } from '../../components'
+import { Container } from './styled'
 
 export function NotFound() {
 	return (

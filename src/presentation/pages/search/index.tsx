@@ -1,10 +1,17 @@
 import { useCallback, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { Error, HeroList, Layout, LayoutBody, Loading, Spinner } from '../../components'
+import {
+	Error,
+	HeroList,
+	Layout,
+	LayoutBody,
+	Loading,
+	Spinner,
+	Title
+} from '../../components'
 import { Heroe } from '../../../domain/models'
 import { LoadHeroes } from '../../../domain/usecases'
-import { Title } from './styled'
 
 type SearchProps = {
 	loadHeroes: LoadHeroes
