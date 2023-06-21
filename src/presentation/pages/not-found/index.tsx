@@ -1,5 +1,3 @@
-import { useNavigate } from 'react-router-dom'
-
 import { Layout, LayoutBody, Title } from '../../components'
 import { Container } from './styled'
 
