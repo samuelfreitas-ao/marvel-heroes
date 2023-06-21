@@ -27,6 +27,10 @@ export const GlobalStyle = createGlobalStyle`
 		padding: 8px 12px;
 		font-size: 14px;
 		cursor: pointer;
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		background-color: transparent;
 		
 		& *{
 			font-size: 14px;
