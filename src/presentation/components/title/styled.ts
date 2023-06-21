@@ -1,9 +1,9 @@
 import { styled } from 'styled-components'
 
-export const Container = styled.div`
+export const Container = styled.h1`
 	background-color: #363838;
 	color: #ffffff;
 	padding: 8px;
 	text-align: center;
-	font-size: 32px;
+	font-weight: 500;
 `
