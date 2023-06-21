@@ -1,4 +1,8 @@
-import { LoadHeroesResult, LoadHeroes } from '../../domain/usecases'
+import {
+  LoadHeroesResult,
+  LoadHeroes,
+  LoadHeroesParams,
+} from '../../domain/usecases'
 import { HttpClient, HttpStatusCode } from '../protocols/http'
 
 export class RemoteLoadHeroes implements LoadHeroes {
@@ -7,10 +11,11 @@ export class RemoteLoadHeroes implements LoadHeroes {
     private readonly httpClient: HttpClient
   ) {}
 
-  async loadAll(): Promise<LoadHeroesResult> {
+  async loadAll(params?: LoadHeroesParams): Promise<LoadHeroesResult> {
     const httpResponse = await this.httpClient.request({
       url: this.url,
       method: 'get',
+      params: params?.params,
     })
 
     switch (httpResponse.statusCode) {

@@ -1,7 +1,15 @@
 import { Heroe } from '../models'
 
 export interface LoadHeroes {
-  loadAll(): Promise<LoadHeroesResult>
+  loadAll(params?: LoadHeroesParams): Promise<LoadHeroesResult>
 }
 
+export type LoadHeroesParams = {
+  params?: {
+    nameStartsWith?: string
+    limit?: number
+    offset?: number
+    orderBy?: 'name' | '-name' | 'modified' | '-modified'
+  }
+}
 export type LoadHeroesResult = Heroe[]
