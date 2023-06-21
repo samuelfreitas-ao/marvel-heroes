@@ -25,17 +25,19 @@ export function Home({ loadHeroes }: HomeProps) {
 	}, [loadHeroes])
 
 	useEffect(() => {
-    fetchHeroes()
-  }, [fetchHeroes])
+		fetchHeroes()
+	}, [fetchHeroes])
 
 	return (
 		<Container>
 			<Header />
 			<Body>
 				<Title>Personagens {isLoding && <Spinner />}</Title>
-				{isLoding ? <Loading data='Carregando personagens...' /> :
+				{isLoding ? (
+					<Loading data="Carregando personagens..." />
+				) : (
 					<HeroList heroes={heroes} />
-				}
+				)}
 			</Body>
 			<Footer />
 		</Container>

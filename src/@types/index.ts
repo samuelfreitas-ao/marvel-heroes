@@ -1,9 +1,9 @@
 export type Image = {
-  path: string
-  extension: string
+	path: string
+	extension: string
 }
 
 export type Url = {
-  type: string
-  url: string
+	type: string
+	url: string
 }

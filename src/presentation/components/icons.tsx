@@ -1,12 +1,28 @@
 import { IconBaseProps } from 'react-icons'
 
-import { IoLogoFacebook, IoLogoGithub, IoLogoLinkedin, IoLogoWhatsapp, IoMdSearch } from 'react-icons/io'
+import {
+	IoLogoFacebook,
+	IoLogoGithub,
+	IoLogoLinkedin,
+	IoLogoWhatsapp,
+	IoMdSearch
+} from 'react-icons/io'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 
 export const IconSearch = (props: IconBaseProps) => <IoMdSearch {...props} />
-export const IconSpinner = (props: IconBaseProps) => <AiOutlineLoading3Quarters {...props} />
+export const IconSpinner = (props: IconBaseProps) => (
+	<AiOutlineLoading3Quarters {...props} />
+)
 
-export const IconWhatsapp = (props: IconBaseProps): React.ReactElement => (<IoLogoWhatsapp {...props} />)
-export const IconFacebook = (props: IconBaseProps): React.ReactElement => (<IoLogoFacebook {...props} />)
-export const IconLinkedin = (props: IconBaseProps): React.ReactElement => (<IoLogoLinkedin {...props} />)
-export const IconGithub = (props: IconBaseProps): React.ReactElement => (<IoLogoGithub {...props} />)
+export const IconWhatsapp = (props: IconBaseProps): React.ReactElement => (
+	<IoLogoWhatsapp {...props} />
+)
+export const IconFacebook = (props: IconBaseProps): React.ReactElement => (
+	<IoLogoFacebook {...props} />
+)
+export const IconLinkedin = (props: IconBaseProps): React.ReactElement => (
+	<IoLogoLinkedin {...props} />
+)
+export const IconGithub = (props: IconBaseProps): React.ReactElement => (
+	<IoLogoGithub {...props} />
+)

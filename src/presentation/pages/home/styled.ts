@@ -1,24 +1,24 @@
 import { styled } from 'styled-components'
 
 export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 `
 export const Body = styled.main`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  background-color: #ffffff;
-  padding: 24px;
-  border-radius: 32px;
-  margin-top: -80px;
-  margin-left: 24px;
-  margin-right: 24px;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	background-color: #ffffff;
+	padding: 24px;
+	border-radius: 32px;
+	margin-top: -80px;
+	margin-left: 24px;
+	margin-right: 24px;
 `
 export const Title = styled.div`
-  background-color: #363838;
-  color: #ffffff;
-  padding: 8px;
-  text-align: center;
-  font-size: 32px;
+	background-color: #363838;
+	color: #ffffff;
+	padding: 8px;
+	text-align: center;
+	font-size: 32px;
 `

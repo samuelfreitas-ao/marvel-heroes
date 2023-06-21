@@ -3,5 +3,5 @@ import { AxiosHttpClient } from '../../../infra/http'
 import { makeApiUrl } from '../http'
 
 export const makeRemoteLoadHeroes = () => {
-  return new RemoteLoadHeroes(makeApiUrl('/characters'), new AxiosHttpClient())
+	return new RemoteLoadHeroes(makeApiUrl('/characters'), new AxiosHttpClient())
 }

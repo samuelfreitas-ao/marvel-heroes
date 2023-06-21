@@ -1,5 +1,5 @@
-import { IconSpinner } from ".."
-import { Container, SpinnerItem } from "./styled"
+import { IconSpinner } from '..'
+import { Container, SpinnerItem } from './styled'
 
 export function Spinner() {
 	return (

@@ -1,6 +1,6 @@
-import { IconFacebook, IconGithub, IconLinkedin, IconWhatsapp } from ".."
-import { getPersonalInfo } from "../../../utils/data"
-import { Container, SocialItem, SocialList } from "./styled"
+import { IconFacebook, IconGithub, IconLinkedin, IconWhatsapp } from '..'
+import { getPersonalInfo } from '../../../utils/data'
+import { Container, SocialItem, SocialList } from './styled'
 
 const { github, facebook, linkedin, whatsAppLink } = getPersonalInfo()
 
@@ -25,11 +25,18 @@ export function Footer() {
 	]
 	return (
 		<Container>
-			<div>Todos os direitos à <a href="//github.com/samuelfreitas-ao" target="_blank">Samuel Freitas</a></div>
+			<div>
+				Todos os direitos à{' '}
+				<a href="//github.com/samuelfreitas-ao" target="_blank" rel="noreferrer">
+					Samuel Freitas
+				</a>
+			</div>
 			<SocialList>
-				{data.map(item => (
+				{data.map((item) => (
 					<SocialItem key={item.link}>
-						<a href={item.link} target="_blank">{item.icon}</a>
+						<a href={item.link} target="_blank" rel="noreferrer">
+							{item.icon}
+						</a>
 					</SocialItem>
 				))}
 			</SocialList>
