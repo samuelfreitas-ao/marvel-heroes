@@ -1,6 +1,6 @@
 import { styled } from 'styled-components'
 
-export const Item = styled.li`
+export const Container = styled.li`
 	position: relative;
 	display: flex;
 	min-height: 100px;
@@ -10,6 +10,13 @@ export const Item = styled.li`
 	&:hover {
 		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 	}
+`
+export const ImageContainer = styled.div`
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 `
 export const ItemImage = styled.img<{ unavailable?: string }>`
 	opacity: ${(props) => (props?.unavailable ? 0.6 : 0.8)};
