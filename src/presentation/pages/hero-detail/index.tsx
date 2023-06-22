@@ -50,7 +50,7 @@ export function HeroDetail({ loadHeroes }: HeroDetailProps) {
 					Personagem: {hero?.name} {isLoading && <Spinner />}
 				</Title>
 				{isLoading ? (
-					<Loading data="Carregando personagens..." />
+					<Loading data="Carregando personagem..." />
 				) : error ? (
 					<Error message={error} />
 				) : hero?.name ? (
