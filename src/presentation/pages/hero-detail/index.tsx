@@ -31,8 +31,6 @@ export function HeroDetail({ loadHeroes }: HeroDetailProps) {
 		if (!heroId) return
 		try {
 			const httpResponse = await loadHeroes.loadAll({ heroId })
-			console.log('httpResponse', httpResponse)
-
 			setHero(httpResponse)
 		} catch (error: any) {
 			setError(error.message)
