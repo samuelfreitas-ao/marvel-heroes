@@ -12,11 +12,18 @@ export const Container = styled.li`
 	}
 `
 export const ImageContainer = styled.div`
+	position: relative;
 	display: flex;
 	flex: 1;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+
+	& > :not(img) {
+		position: absolute;
+		z-index: 1;
+		color: #666;
+	}
 `
 export const ItemImage = styled.img<{ unavailable?: string }>`
 	opacity: ${(props) => (props?.unavailable ? 0.6 : 0.8)};

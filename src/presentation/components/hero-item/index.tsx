@@ -1,14 +1,16 @@
-import { useCallback } from 'react'
+import { memo, useCallback, useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Hero } from '../../../domain/models'
-import { Item, ItemImage, ItemTitle } from './styled'
+import { ImageContainer, Container, ItemImage, ItemTitle } from './styled'
+import { Spinner } from '..'
 
 type HeroItemProps = {
 	hero: Hero
 }
 
-export function HeroItem({ hero }: HeroItemProps) {
+export const HeroItem = memo(({ hero }: HeroItemProps) => {
 	const navigate = useNavigate()
+	const [loadingImg, setLoadingImg] = useState(true)
 
 	const { extension, path } = hero.thumbnail
 	const imgUrl = `${path}/standard_fantastic.${extension}`
@@ -17,14 +19,21 @@ export function HeroItem({ hero }: HeroItemProps) {
 		imgUnavailable = 'true'
 	}
 
+	const handleImageLoad = useCallback(() => {
+		setLoadingImg(false)
+	}, [])
+
 	const handleOpenDetail = useCallback(() => {
 		navigate(`/${hero.id}`)
 	}, [hero.id, navigate])
 
 	return (
-		<Item onClick={handleOpenDetail}>
-			<ItemImage src={imgUrl} unavailable={imgUnavailable} />
+		<Container onClick={handleOpenDetail}>
+			<ImageContainer>
+				{loadingImg && <Spinner size={32} />}
+				<ItemImage src={imgUrl} unavailable={imgUnavailable} onLoad={handleImageLoad} />
+			</ImageContainer>
 			<ItemTitle>{hero.name}</ItemTitle>
-		</Item>
+		</Container>
 	)
-}
+})
