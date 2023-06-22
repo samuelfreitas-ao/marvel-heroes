@@ -35,4 +35,8 @@ export const BioContainer = styled.div`
 `
 export const BioTitle = styled.h2``
 
-export const BioBody = styled.div``
+export const BioBody = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+`
