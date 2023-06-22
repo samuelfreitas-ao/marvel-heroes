@@ -1,3 +1,4 @@
+import { SerieList } from '..'
 import { Hero } from '../../../domain/models'
 import {
 	Container,
@@ -26,7 +27,10 @@ export function HeroCardDetail({ hero }: HeroCardDetailProps) {
 				<Image src={imgUrl} unavailable={imgUnavailable} />
 				<BioContainer>
 					<BioTitle>{hero.name}</BioTitle>
-					<BioBody>{hero.description || 'Nenhuma descrição'}</BioBody>
+					<BioBody>
+						{hero.description || 'Nenhuma descrição'}
+						{hero.series.length > 0 && <SerieList series={hero.series} />}
+					</BioBody>
 				</BioContainer>
 			</ImageContainer>
 		</Container>
