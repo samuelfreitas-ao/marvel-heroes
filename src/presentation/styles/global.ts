@@ -38,4 +38,8 @@ export const GlobalStyle = createGlobalStyle<object>`
 			opacity: 0.8;
 		}
 	}
+
+	small{
+		font-size: 12px;
+	}
 `
