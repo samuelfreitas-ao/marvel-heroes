@@ -2,19 +2,31 @@ import { styled } from 'styled-components'
 
 export const Container = styled.div`
 	position: relative;
-	display: flex;
-	flex-direction: column;
-	min-height: 100px;
-`
-export const ImageContainer = styled.div`
 	display: grid;
 	grid-template-columns: 6fr 4fr;
-	grid-gap: 16px;
 	justify-content: center;
 	align-items: center;
+	grid-gap: 16px;
+	flex-direction: column;
+	min-height: 100px;
 
 	@media (max-width: 768px) {
 		grid-template-columns: 1fr;
+	}
+`
+export const ImageContainer = styled.div`
+	display: flex;
+	flex: 1;
+	justify-content: center;
+	position: relative;
+	min-height: 100px;
+	& > :not(img) {
+		position: absolute;
+		z-index: 1;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		color: #666;
 	}
 `
 export const Image = styled.img<{ unavailable?: string }>`
