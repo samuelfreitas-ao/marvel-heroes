@@ -1,3 +1,4 @@
+import { Serie } from '.'
 import { Image, Url } from '../../@types'
 
 export interface Hero {
@@ -8,4 +9,5 @@ export interface Hero {
 	resourceURI: string
 	urls: Url[]
 	thumbnail: Image
+	series: Serie[]
 }
