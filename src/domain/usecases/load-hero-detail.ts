@@ -1,4 +1,4 @@
-import { Heroe } from '../models'
+import { Hero } from '../models'
 
 export interface LoadHeroDetail {
 	loadAll(param: LoadHeroDetailParams): Promise<LoadHeroDetailResult>
@@ -13,4 +13,4 @@ export type LoadHeroDetailParams = {
 		orderBy?: 'name' | '-name' | 'modified' | '-modified'
 	}
 }
-export type LoadHeroDetailResult = Heroe
+export type LoadHeroDetailResult = Hero

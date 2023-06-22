@@ -9,7 +9,7 @@ import {
 	Spinner,
 	Title
 } from '../../components'
-import { Heroe } from '../../../domain/models'
+import { Hero } from '../../../domain/models'
 import { LoadHeroes } from '../../../domain/usecases'
 
 type HomeProps = {
@@ -17,7 +17,7 @@ type HomeProps = {
 }
 
 export function Home({ loadHeroes }: HomeProps) {
-	const [heroes, setHeroes] = useState<Heroe[]>([])
+	const [heroes, setHeroes] = useState<Hero[]>([])
 	const [isLoding, setIsLoading] = useState(true)
 	const [error, setError] = useState()
 

@@ -1,9 +1,9 @@
 import { HeroItem } from '..'
-import { Heroe } from '../../../domain/models'
+import { Hero } from '../../../domain/models'
 import { List } from './styled'
 
 type HeroListProps = {
-	heroes: Heroe[]
+	heroes: Hero[]
 }
 
 export function HeroList({ heroes }: HeroListProps) {

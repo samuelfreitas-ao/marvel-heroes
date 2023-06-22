@@ -1,6 +1,6 @@
 import { Image, Url } from '../../@types'
 
-export interface Heroe {
+export interface Hero {
 	id: number
 	name: string
 	description: string

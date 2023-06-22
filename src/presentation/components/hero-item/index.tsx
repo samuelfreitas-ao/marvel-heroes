@@ -1,10 +1,10 @@
 import { useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Heroe } from '../../../domain/models'
+import { Hero } from '../../../domain/models'
 import { Item, ItemImage, ItemTitle } from './styled'
 
 type HeroItemProps = {
-	hero: Heroe
+	hero: Hero
 }
 
 export function HeroItem({ hero }: HeroItemProps) {

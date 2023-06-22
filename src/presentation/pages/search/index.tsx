@@ -10,7 +10,7 @@ import {
 	Spinner,
 	Title
 } from '../../components'
-import { Heroe } from '../../../domain/models'
+import { Hero } from '../../../domain/models'
 import { LoadHeroes } from '../../../domain/usecases'
 
 type SearchProps = {
@@ -23,7 +23,7 @@ type RouteParams = {
 export function Search({ loadHeroes }: SearchProps) {
 	const { query } = useParams<RouteParams>()
 
-	const [heroes, setHeroes] = useState<Heroe[]>([])
+	const [heroes, setHeroes] = useState<Hero[]>([])
 	const [isLoding, setIsLoading] = useState(true)
 	const [error, setError] = useState()
 

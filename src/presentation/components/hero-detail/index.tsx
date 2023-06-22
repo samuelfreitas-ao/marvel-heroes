@@ -1,4 +1,4 @@
-import { Heroe } from '../../../domain/models'
+import { Hero } from '../../../domain/models'
 import {
 	Container,
 	ImageContainer,
@@ -9,7 +9,7 @@ import {
 } from './styled'
 
 type HeroCardDetailProps = {
-	hero: Heroe
+	hero: Hero
 }
 
 export function HeroCardDetail({ hero }: HeroCardDetailProps) {
