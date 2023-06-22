@@ -1,13 +1,13 @@
 import { createGlobalStyle } from 'styled-components'
 
-export const GlobalStyle = createGlobalStyle`
-	*{
+export default createGlobalStyle`
+	* {
 		font-family: Exo, Arial, Helvetica, sans-serif;
 		margin: 0;
 	}
 
 	body{
-		background-color: #444;
+		background-color: #444;	
 	}
 
 	:not(h1, h2, h3, strong, b){
@@ -17,7 +17,7 @@ export const GlobalStyle = createGlobalStyle`
 
 	img{
 		max-width: 100%;
-  	max-height: 100%;
+		max-height: 100%;
 	}
 	
 	button{
