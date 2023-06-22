@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect, useRef, useState } from 'react'
+import { memo, useCallback, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Hero } from '../../../domain/models'
 import { ImageContainer, Container, ItemImage, ItemTitle } from './styled'
