@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 
-export default createGlobalStyle`
+export default createGlobalStyle<object>`
 	* {
 		font-family: Exo, Arial, Helvetica, sans-serif;
 		margin: 0;
