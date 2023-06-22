@@ -1,11 +1,13 @@
+import { IconBaseProps } from 'react-icons'
+
 import { IconSpinner } from '..'
 import { Container, SpinnerItem } from './styled'
 
-export function Spinner() {
+export function Spinner(props?: IconBaseProps) {
 	return (
 		<Container>
 			<SpinnerItem>
-				<IconSpinner />
+				<IconSpinner {...props} />
 			</SpinnerItem>
 		</Container>
 	)
