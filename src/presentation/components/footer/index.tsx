@@ -1,6 +1,6 @@
 import { IconFacebook, IconGithub, IconLinkedin, IconWhatsapp } from '..'
 import { getPersonalInfo } from '../../../utils/data'
-import { Container, SocialItem, SocialList } from './styled'
+import { Container, CopyRightAttribution, SocialItem, SocialList } from './styled'
 
 const { github, facebook, linkedin, whatsAppLink } = getPersonalInfo()
 
@@ -40,6 +40,9 @@ export function Footer() {
 					</SocialItem>
 				))}
 			</SocialList>
+			<CopyRightAttribution href="http://marvel.com" target="_black" rel="noreferrer">
+				Data provided by Marvel. © 2023 MARVEL
+			</CopyRightAttribution>
 		</Container>
 	)
 }

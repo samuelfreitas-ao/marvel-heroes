@@ -38,3 +38,4 @@ export const SocialItem = styled.li`
 		}
 	}
 `
+export const CopyRightAttribution = styled.a``
