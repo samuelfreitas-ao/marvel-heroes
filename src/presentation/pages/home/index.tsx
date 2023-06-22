@@ -18,7 +18,7 @@ type HomeProps = {
 
 export function Home({ loadHeroes }: HomeProps) {
 	const [heroes, setHeroes] = useState<Hero[]>([])
-	const [isLoding, setIsLoading] = useState(true)
+	const [isLoading, setIsLoading] = useState(true)
 	const [error, setError] = useState()
 
 	const fetchHeroes = useCallback(async () => {
@@ -39,8 +39,8 @@ export function Home({ loadHeroes }: HomeProps) {
 	return (
 		<Layout>
 			<LayoutBody>
-				<Title>Personagens {isLoding && <Spinner />}</Title>
-				{isLoding ? (
+				<Title>Personagens {isLoading && <Spinner />}</Title>
+				{isLoading ? (
 					<Loading data="Carregando personagens..." />
 				) : error ? (
 					<Error message={error} />
