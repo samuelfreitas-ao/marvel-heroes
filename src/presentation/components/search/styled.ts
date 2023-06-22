@@ -22,7 +22,7 @@ export const FormContent = styled.form`
 	background-color: rgba(0, 0, 0, 0.8);
 `
 export const Input = styled.input`
-	flex: 1;
+	width: 100%;
 	background-color: transparent;
 	font-size: 24px;
 	color: #999999;
@@ -31,6 +31,14 @@ export const Input = styled.input`
 	&::placeholder {
 		color: #999999;
 		font-weight: normal;
+	}
+
+	@media (max-width: 768px) {
+		font-size: 20px;
+	}
+
+	@media (max-width: 576px) {
+		font-size: 16px;
 	}
 `
 export const Button = styled.button`

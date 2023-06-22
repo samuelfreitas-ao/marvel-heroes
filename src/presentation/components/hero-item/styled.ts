@@ -22,4 +22,12 @@ export const ItemTitle = styled.div`
 	position: absolute;
 	bottom: 0;
 	width: 100%;
+
+	@media (max-width: 768px) {
+		font-size: 20px;
+	}
+
+	@media (max-width: 576px) {
+		font-size: 16px;
+	}
 `

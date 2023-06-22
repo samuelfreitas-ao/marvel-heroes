@@ -6,6 +6,14 @@ export const Container = styled.h1`
 	padding: 8px;
 	text-align: center;
 	font-weight: 500;
+
+	@media (max-width: 768px) {
+		font-size: 24px;
+	}
+
+	@media (max-width: 576px) {
+		font-size: 20px;
+	}
 `
 export const Button = styled.button`
 	background-color: #444;
