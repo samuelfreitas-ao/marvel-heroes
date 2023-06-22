@@ -19,7 +19,8 @@ export class RemoteLoadHeroDetail implements LoadHeroDetail {
 
 		switch (httpResponse.statusCode) {
 			case HttpStatusCode.ok:
-				return httpResponse.body.data.results[0]
+				const hero = httpResponse.body.data.results[0]
+				return { ...hero, series: hero?.series?.items }
 			case HttpStatusCode.notFound:
 				throw new Error('Personagem não encontrada')
 			default:
