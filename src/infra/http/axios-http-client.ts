@@ -22,7 +22,9 @@ export class AxiosHttpClient implements HttpClient {
 			axiosResponse = {
 				...error,
 				status: httpError?.status ?? HttpStatusCode.serverError,
-				data: httpError?.data ?? { error: error?.message, code: error?.code }
+				data: httpError?.data ?? {
+					message: error?.message
+				}
 			}
 		}
 		return {

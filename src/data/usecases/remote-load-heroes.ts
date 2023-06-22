@@ -15,7 +15,9 @@ export class RemoteLoadHeroes implements LoadHeroes {
 			case HttpStatusCode.ok:
 				return httpResponse.body.data.results
 			default:
-				throw new Error(httpResponse.body?.status ?? httpResponse.body)
+				throw new Error(
+					httpResponse.body?.status ?? httpResponse.body?.message ?? httpResponse.body
+				)
 		}
 	}
 }
