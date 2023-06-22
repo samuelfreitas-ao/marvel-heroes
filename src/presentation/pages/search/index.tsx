@@ -24,7 +24,7 @@ export function Search({ loadHeroes }: SearchProps) {
 	const { query } = useParams<RouteParams>()
 
 	const [heroes, setHeroes] = useState<Hero[]>([])
-	const [isLoding, setIsLoading] = useState(true)
+	const [isLoading, setIsLoading] = useState(true)
 	const [error, setError] = useState()
 
 	const fetchHeroes = useCallback(async () => {
@@ -53,9 +53,9 @@ export function Search({ loadHeroes }: SearchProps) {
 		<Layout title="Pesquisa | Marvel Heroes">
 			<LayoutBody>
 				<Title backTo="/">
-					Pesquisa: {query} {isLoding && <Spinner />}
+					Pesquisa: {query} {isLoading && <Spinner />}
 				</Title>
-				{isLoding ? (
+				{isLoading ? (
 					<Loading data="Pesquisando personagem..." />
 				) : error ? (
 					<Error message={error} />

@@ -9,8 +9,8 @@ type HeroListProps = {
 export function HeroList({ heroes }: HeroListProps) {
 	return (
 		<List>
-			{heroes.map((heroe) => (
-				<HeroItem key={heroe.id.toString()} hero={heroe} />
+			{heroes.map((hero) => (
+				<HeroItem key={hero.id.toString()} hero={hero} />
 			))}
 		</List>
 	)

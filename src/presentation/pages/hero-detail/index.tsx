@@ -24,7 +24,7 @@ export function HeroDetail({ loadHeroes }: HeroDetailProps) {
 	const { heroId } = useParams<RouteParams>()
 
 	const [hero, setHero] = useState<Hero>()
-	const [isLoding, setIsLoading] = useState(true)
+	const [isLoading, setIsLoading] = useState(true)
 	const [error, setError] = useState()
 
 	const fetchHeroes = useCallback(async () => {
@@ -49,9 +49,9 @@ export function HeroDetail({ loadHeroes }: HeroDetailProps) {
 		<Layout>
 			<LayoutBody>
 				<Title backTo="/">
-					Personagem: {hero?.name} {isLoding && <Spinner />}
+					Personagem: {hero?.name} {isLoading && <Spinner />}
 				</Title>
-				{isLoding ? (
+				{isLoading ? (
 					<Loading data="Carregando personagens..." />
 				) : error ? (
 					<Error message={error} />
