@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 
-export default createGlobalStyle<object>`
-	* {
+export const GlobalStyle = createGlobalStyle<object>`
+	*{
 		font-family: Exo, Arial, Helvetica, sans-serif;
 		margin: 0;
 	}
