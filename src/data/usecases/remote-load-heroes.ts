@@ -1,4 +1,9 @@
-import { LoadHeroesResult, LoadHeroes, LoadHeroesParams } from '../../domain/usecases'
+import {
+	LoadHeroesResult,
+	LoadHeroes,
+	LoadHeroesParams,
+	LoadHerosMetadata
+} from '../../domain/usecases'
 import { HttpClient, HttpStatusCode } from '../protocols/http'
 
 export class RemoteLoadHeroes implements LoadHeroes {
@@ -13,7 +18,12 @@ export class RemoteLoadHeroes implements LoadHeroes {
 
 		switch (httpResponse.statusCode) {
 			case HttpStatusCode.ok:
-				return httpResponse.body.data.results
+				const data = httpResponse.body.data
+				const { count, limit, offset, total } = data as LoadHerosMetadata
+				return {
+					data: data.results,
+					metaData: { count, limit, offset, total }
+				}
 			default:
 				throw new Error(
 					httpResponse.body?.status ?? httpResponse.body?.message ?? httpResponse.body

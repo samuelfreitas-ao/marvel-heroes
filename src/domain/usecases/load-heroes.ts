@@ -12,4 +12,14 @@ export type LoadHeroesParams = {
 		orderBy?: 'name' | '-name' | 'modified' | '-modified'
 	}
 }
-export type LoadHeroesResult = Hero[]
+export type LoadHeroesResult = {
+	data: Hero[]
+	metaData: LoadHerosMetadata
+}
+
+export type LoadHerosMetadata = {
+	count: number
+	limit: number
+	offset: number
+	total: number
+}
