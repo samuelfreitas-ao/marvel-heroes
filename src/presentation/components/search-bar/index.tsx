@@ -48,7 +48,10 @@ export const SearchBar = ({ loadSearch }: SearchBarProps) => {
 				<Button>
 					<IconSearch size={24} />
 				</Button>
-				<Input placeholder="Pesquisar heróis da Marvel..." onChange={handleInputChange} />
+				<Input
+					placeholder="Pesquisar personagens da Marvel..."
+					onChange={handleInputChange}
+				/>
 			</FormContent>
 		</Container>
 	)
