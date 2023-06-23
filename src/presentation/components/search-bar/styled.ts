@@ -17,6 +17,7 @@ export const Container = styled.div`
 `
 export const FormContent = styled.form`
 	display: flex;
+	position: relative;
 	gap: 8px;
 	align-items: center;
 	width: 100%;
@@ -53,4 +54,14 @@ export const Button = styled.button`
 	display: flex;
 	padding: 4px;
 	cursor: pointer;
+`
+export const SearchResultContent = styled.div`
+	position: absolute;
+	top: 50px;
+	left: 0;
+	width: calc(100% - 16px);
+	padding: 8px;
+	background-color: rgba(255, 255, 255, 0.9);
+	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+	z-index: 2;
 `

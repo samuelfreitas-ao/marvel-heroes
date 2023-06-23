@@ -1,9 +1,10 @@
-import { Container, Input, Button, FormContent } from './styled'
+import { Container, Input, Button, FormContent, SearchResultContent } from './styled'
 import { useNavigate } from 'react-router-dom'
 
-import { IconSearch } from '..'
+import { IconSearch, SearchListResult } from '..'
 import { ChangeEvent, FormEvent, useCallback, useRef, useState } from 'react'
-import { LoadHeroes } from '../../../domain/usecases'
+import { LoadHeroes, LoadHerosMetadata } from '../../../domain/usecases'
+import { Hero } from '../../../domain/models'
 
 type SearchBarProps = {
 	loadSearch: LoadHeroes
@@ -11,29 +12,63 @@ type SearchBarProps = {
 export const SearchBar = ({ loadSearch }: SearchBarProps) => {
 	const navigate = useNavigate()
 	const [query, setQuery] = useState('')
+	const [queryResult, setQueryResult] = useState<Hero[]>([])
+	const [metaData, setMetaData] = useState<LoadHerosMetadata>({} as LoadHerosMetadata)
+	const [message, setMessage] = useState('')
+	const [showSearchResult, setShowSearchResult] = useState(false)
+	const [isLoading, setIsLoading] = useState(false)
 	const timeoutId = useRef<number>()
 
 	const fetchData = useCallback(
 		async (search: string) => {
-			const httpResponse = await loadSearch.loadAll({
-				params: { nameStartsWith: search }
-			})
-			console.log('httpResponse Search', httpResponse)
+			setIsLoading(true)
+			setQueryResult([])
+			setMetaData({} as any)
+			try {
+				const { data, metaData } = await loadSearch.loadAll({
+					params: { nameStartsWith: search }
+				})
+				setQueryResult(data)
+				setMetaData(metaData)
+				if (data.length < 1) {
+					setMessage('Nenhum resultado')
+				}
+			} catch (error: any) {
+				console.log('error', error?.message)
+				alert(error?.message)
+			} finally {
+				setIsLoading(false)
+			}
 		},
 		[loadSearch]
 	)
 
-	const handleInputChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-		const newSearchQuery = e.target.value
-		setQuery(newSearchQuery)
+	const handleInputChange = useCallback(
+		(e: ChangeEvent<HTMLInputElement>) => {
+			const newSearchQuery = e.target.value
+			setQuery(newSearchQuery)
+			clearTimeout(timeoutId.current)
+			timeoutId.current = setTimeout(() => {
+				if (newSearchQuery?.trim() !== '' && newSearchQuery?.trim().length > 1) {
+					setMessage('')
+					fetchData(newSearchQuery)
+				} else {
+					setMessage(
+						newSearchQuery.length < 1 ? 'Escreva algum nome' : 'Continue escrevendo'
+					)
+					setQueryResult([])
+					setMetaData({} as any)
+				}
+			}, 900)
+		},
+		[fetchData]
+	)
 
-		clearTimeout(timeoutId.current)
-
-		timeoutId.current = setTimeout(() => {
-			console.log('Realizando pesquisa:', newSearchQuery)
-			fetchData(newSearchQuery)
-		}, 2000)
-	}, [])
+	const toggleShowSearchResult = useCallback(() => {
+		setTimeout(() => {
+			setShowSearchResult(!showSearchResult)
+		}, 200)
+	}, [showSearchResult])
 
 	const handleSubmit = useCallback(
 		(e: FormEvent) => {
@@ -51,7 +86,19 @@ export const SearchBar = ({ loadSearch }: SearchBarProps) => {
 				<Input
 					placeholder="Pesquisar personagens da Marvel..."
 					onChange={handleInputChange}
+					onFocus={toggleShowSearchResult}
+					onBlur={toggleShowSearchResult}
 				/>
+				{showSearchResult && (
+					<SearchResultContent>
+						<SearchListResult
+							heroes={queryResult}
+							metadata={metaData}
+							message={message}
+							isLoading={isLoading}
+						/>
+					</SearchResultContent>
+				)}
 			</FormContent>
 		</Container>
 	)
