@@ -5,10 +5,10 @@ import { IconSearch } from '..'
 import { ChangeEvent, FormEvent, useCallback, useRef, useState } from 'react'
 import { LoadHeroes } from '../../../domain/usecases'
 
-type SearchHeroesProps = {
+type SearchBarProps = {
 	loadSearch: LoadHeroes
 }
-export const SearchBar = ({ loadSearch }: SearchHeroesProps) => {
+export const SearchBar = ({ loadSearch }: SearchBarProps) => {
 	const navigate = useNavigate()
 	const [query, setQuery] = useState('')
 	const timeoutId = useRef<number>()
