@@ -7,7 +7,6 @@ import {
 	Layout,
 	LayoutBody,
 	Loading,
-	Spinner,
 	Title
 } from '../../components'
 import { Hero } from '../../../domain/models'
@@ -46,9 +45,7 @@ export function HeroDetail({ loadHeroes }: HeroDetailProps) {
 	return (
 		<Layout>
 			<LayoutBody>
-				<Title backTo="/">
-					Personagem: {hero?.name} {isLoading && <Spinner />}
-				</Title>
+				<Title backTo="/">Personagem: {hero?.name}</Title>
 				{isLoading ? (
 					<Loading data="Carregando personagem..." />
 				) : error ? (

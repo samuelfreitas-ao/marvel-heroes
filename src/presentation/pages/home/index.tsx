@@ -1,14 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 
-import {
-	Error,
-	HeroList,
-	Layout,
-	LayoutBody,
-	Loading,
-	Spinner,
-	Title
-} from '../../components'
+import { Error, HeroList, Layout, LayoutBody, Loading, Title } from '../../components'
 import { Hero } from '../../../domain/models'
 import { LoadHeroes } from '../../../domain/usecases'
 
@@ -39,7 +31,7 @@ export function Home({ loadHeroes }: HomeProps) {
 	return (
 		<Layout>
 			<LayoutBody>
-				<Title>Personagens {isLoading && <Spinner />}</Title>
+				<Title>Personagens</Title>
 				{isLoading ? (
 					<Loading data="Carregando personagens..." />
 				) : error ? (
