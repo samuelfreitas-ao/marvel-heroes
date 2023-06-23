@@ -15,7 +15,7 @@ export const SearchHeroes = () => {
 	const handleSubmit = useCallback(
 		(e: FormEvent) => {
 			e.preventDefault()
-			navigate(`/search/${query}`)
+			navigate(`/pesquisa/${query}`)
 		},
 		[navigate, query]
 	)

@@ -7,9 +7,9 @@ export function AppRoutes() {
 		<BrowserRouter>
 			<Routes>
 				<Route path="/" Component={makeHome}></Route>
-				<Route path="/search" Component={makeSearch}></Route>
-				<Route path="/search/:query" Component={makeSearch}></Route>
-				<Route path="/:heroId" Component={() => makeHeroDetail()}></Route>
+				<Route path="/pesquisa" Component={makeSearch}></Route>
+				<Route path="/pesquisa/:query" Component={makeSearch}></Route>
+				<Route path="/personagem/:heroId" Component={() => makeHeroDetail()}></Route>
 				<Route path="/*" Component={NotFound}></Route>
 			</Routes>
 		</BrowserRouter>
