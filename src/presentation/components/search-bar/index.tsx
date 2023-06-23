@@ -8,7 +8,7 @@ import { LoadHeroes } from '../../../domain/usecases'
 type SearchHeroesProps = {
 	loadSearch: LoadHeroes
 }
-export const SearchHeroes = ({ loadSearch }: SearchHeroesProps) => {
+export const SearchBar = ({ loadSearch }: SearchHeroesProps) => {
 	const navigate = useNavigate()
 	const [query, setQuery] = useState('')
 	const timeoutId = useRef<number>()

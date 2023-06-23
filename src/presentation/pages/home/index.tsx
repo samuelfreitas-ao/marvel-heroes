@@ -7,7 +7,7 @@ import {
 	Layout,
 	LayoutBody,
 	Loading,
-	SearchHeroes,
+	SearchBar,
 	Title
 } from '../../components'
 import { Hero } from '../../../domain/models'
@@ -40,7 +40,7 @@ export function Home({ loadHeroes }: HomeProps) {
 	return (
 		<Layout>
 			<Header>
-				<SearchHeroes loadSearch={loadHeroes} />
+				<SearchBar loadSearch={loadHeroes} />
 			</Header>
 			<LayoutBody>
 				<Title>Personagens</Title>

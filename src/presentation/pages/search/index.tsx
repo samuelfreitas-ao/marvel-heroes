@@ -8,7 +8,7 @@ import {
 	Layout,
 	LayoutBody,
 	Loading,
-	SearchHeroes,
+	SearchBar,
 	Title
 } from '../../components'
 import { Hero } from '../../../domain/models'
@@ -53,7 +53,7 @@ export function Search({ loadHeroes }: SearchProps) {
 	return (
 		<Layout title="Pesquisa | Marvel Heroes">
 			<Header>
-				<SearchHeroes loadSearch={loadHeroes} />
+				<SearchBar loadSearch={loadHeroes} />
 			</Header>
 			<LayoutBody>
 				<Title backTo="/">Pesquisa: {query}</Title>
