@@ -2,7 +2,7 @@ import { Container, Input, Button, FormContent, SearchResultContent } from './st
 import { useNavigate } from 'react-router-dom'
 
 import { IconSearch, SearchListResult } from '..'
-import { ChangeEvent, FormEvent, useCallback, useRef, useState } from 'react'
+import { ChangeEvent, FormEvent, useCallback, useEffect, useRef, useState } from 'react'
 import { LoadHeroes, LoadHerosMetadata } from '../../../domain/usecases'
 import { Hero } from '../../../domain/models'
 
@@ -19,11 +19,15 @@ export const SearchBar = ({ loadSearch }: SearchBarProps) => {
 	const [isLoading, setIsLoading] = useState(false)
 	const timeoutId = useRef<number>()
 
+	const resetData = () => {
+		setQueryResult([])
+		setMetaData({} as any)
+	}
+
 	const fetchData = useCallback(
 		async (search: string) => {
 			setIsLoading(true)
-			setQueryResult([])
-			setMetaData({} as any)
+			resetData()
 			try {
 				const { data, metaData } = await loadSearch.loadAll({
 					params: { nameStartsWith: search }
@@ -43,32 +47,38 @@ export const SearchBar = ({ loadSearch }: SearchBarProps) => {
 		[loadSearch]
 	)
 
-	const handleInputChange = useCallback(
-		(e: ChangeEvent<HTMLInputElement>) => {
-			const newSearchQuery = e.target.value
-			setQuery(newSearchQuery)
+	const handleSearch = useCallback(
+		(newSearchQuery: string) => {
+			setMessage(newSearchQuery.length < 1 ? 'Escreva algum nome' : 'Continue escrevendo')
 			clearTimeout(timeoutId.current)
 			timeoutId.current = setTimeout(() => {
 				if (newSearchQuery?.trim() !== '' && newSearchQuery?.trim().length > 1) {
 					setMessage('')
 					fetchData(newSearchQuery)
 				} else {
-					setMessage(
-						newSearchQuery.length < 1 ? 'Escreva algum nome' : 'Continue escrevendo'
-					)
-					setQueryResult([])
-					setMetaData({} as any)
+					resetData()
 				}
 			}, 900)
 		},
 		[fetchData]
 	)
 
+	const handleInputChange = useCallback(
+		(e: ChangeEvent<HTMLInputElement>) => {
+			const newSearchQuery = e.target.value
+			setQuery(newSearchQuery)
+			handleSearch(newSearchQuery)
+		},
+		[handleSearch]
+	)
+
 	const toggleShowSearchResult = useCallback(() => {
+		const show = !showSearchResult
+		setMessage(show && query.trim().length < 2 ? 'Escreva algum nome' : '')
 		setTimeout(() => {
-			setShowSearchResult(!showSearchResult)
+			setShowSearchResult(show)
 		}, 200)
-	}, [showSearchResult])
+	}, [showSearchResult, query])
 
 	const handleSubmit = useCallback(
 		(e: FormEvent) => {
