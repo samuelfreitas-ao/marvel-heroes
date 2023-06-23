@@ -1,6 +1,6 @@
 import { ReactNode, useEffect } from 'react'
 import { Body, Container } from './styled'
-import { Footer, Header } from '..'
+import { Footer } from '..'
 
 type LayoutProps = {
 	children: ReactNode
@@ -13,7 +13,6 @@ export function Layout({ children, title = 'Marvel Heroes' }: LayoutProps) {
 
 	return (
 		<Container>
-			<Header />
 			{children}
 			<Footer />
 		</Container>

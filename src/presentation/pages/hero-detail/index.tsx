@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 
 import {
 	Error,
+	Header,
 	HeroCardDetail,
 	Layout,
 	LayoutBody,
@@ -44,6 +45,7 @@ export function HeroDetail({ loadHeroes }: HeroDetailProps) {
 
 	return (
 		<Layout>
+			<Header />
 			<LayoutBody>
 				<Title backTo="/">Personagem: {hero?.name}</Title>
 				{isLoading ? (

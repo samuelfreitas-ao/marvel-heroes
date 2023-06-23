@@ -3,8 +3,12 @@ import { useNavigate } from 'react-router-dom'
 
 import { IconSearch } from '..'
 import { ChangeEvent, FormEvent, useCallback, useState } from 'react'
+import { LoadHeroes } from '../../../domain/usecases'
 
-export const SearchHeroes = () => {
+type SearchHeroesProps = {
+	loadSearch: LoadHeroes
+}
+export const SearchHeroes = ({ loadSearch }: SearchHeroesProps) => {
 	const navigate = useNavigate()
 	const [query, setQuery] = useState('')
 

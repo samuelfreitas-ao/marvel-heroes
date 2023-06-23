@@ -1,6 +1,15 @@
 import { useCallback, useEffect, useState } from 'react'
 
-import { Error, HeroList, Layout, LayoutBody, Loading, Title } from '../../components'
+import {
+	Error,
+	Header,
+	HeroList,
+	Layout,
+	LayoutBody,
+	Loading,
+	SearchHeroes,
+	Title
+} from '../../components'
 import { Hero } from '../../../domain/models'
 import { LoadHeroes } from '../../../domain/usecases'
 
@@ -30,6 +39,9 @@ export function Home({ loadHeroes }: HomeProps) {
 
 	return (
 		<Layout>
+			<Header>
+				<SearchHeroes loadSearch={loadHeroes} />
+			</Header>
 			<LayoutBody>
 				<Title>Personagens</Title>
 				{isLoading ? (

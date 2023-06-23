@@ -1,7 +1,16 @@
 import { useCallback, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { Error, HeroList, Layout, LayoutBody, Loading, Title } from '../../components'
+import {
+	Error,
+	Header,
+	HeroList,
+	Layout,
+	LayoutBody,
+	Loading,
+	SearchHeroes,
+	Title
+} from '../../components'
 import { Hero } from '../../../domain/models'
 import { LoadHeroes } from '../../../domain/usecases'
 
@@ -43,6 +52,9 @@ export function Search({ loadHeroes }: SearchProps) {
 
 	return (
 		<Layout title="Pesquisa | Marvel Heroes">
+			<Header>
+				<SearchHeroes loadSearch={loadHeroes} />
+			</Header>
 			<LayoutBody>
 				<Title backTo="/">Pesquisa: {query}</Title>
 				{isLoading ? (
