@@ -24,8 +24,8 @@ export function Home({ loadHeroes }: HomeProps) {
 
 	const fetchHeroes = useCallback(async () => {
 		try {
-			const httpResponse = await loadHeroes.loadAll()
-			setHeroes(httpResponse)
+			const { data } = await loadHeroes.loadAll()
+			setHeroes(data)
 		} catch (error: any) {
 			setError(error.message)
 		} finally {

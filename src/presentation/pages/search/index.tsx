@@ -31,10 +31,10 @@ export function Search({ loadHeroes }: SearchProps) {
 	const fetchHeroes = useCallback(async () => {
 		setIsLoading(true)
 		try {
-			const httpResponse = await loadHeroes.loadAll({
+			const { data } = await loadHeroes.loadAll({
 				params: { nameStartsWith: query }
 			})
-			setHeroes(httpResponse)
+			setHeroes(data)
 		} catch (error: any) {
 			setError(error.message)
 		} finally {
