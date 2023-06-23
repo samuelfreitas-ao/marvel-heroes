@@ -11,6 +11,9 @@ export const Container = styled.div`
 	@media (max-width: 768px) {
 		padding: 16px;
 	}
+	@media (max-width: 576px) {
+		padding: 8px;
+	}
 `
 export const FormContent = styled.form`
 	display: flex;

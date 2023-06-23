@@ -13,10 +13,12 @@ export const List = styled.ul`
 
 	@media (max-width: 992px) {
 		grid-template-columns: repeat(3, 1fr);
+		grid-gap: 12px;
 	}
 
 	@media (max-width: 768px) {
 		grid-template-columns: repeat(2, 1fr);
+		grid-gap: 8px;
 	}
 
 	@media (max-width: 576px) {
