@@ -1,3 +1,4 @@
+import { Loading } from '..'
 import { LoadHerosMetadata } from '../../../domain/usecases'
 import { paginate } from '../../../utils'
 import { Container, Item, List } from './styled'
@@ -6,46 +7,59 @@ type PaginationProps = {
 	metaData: LoadHerosMetadata
 	onChangePage: (page: number) => void
 	page: number
+	isLoading?: boolean
 }
 
 export function Pagination({
 	metaData,
 	onChangePage: onSelect,
-	page: selectedPage
+	page,
+	isLoading
 }: PaginationProps) {
 	if (!metaData?.count || metaData?.count < 1) return <></>
-	const pages = Math.floor(metaData.total / metaData.count) - 2
-	if (pages <= 2) return <></>
-
+	const { startPage, endPage, pageCount } = paginate(metaData)
+	if (pageCount <= 1) return <></>
 	const renderPages = () => {
-		const { startPage, endPage, pageCount } = paginate(metaData)
 		const pageButtons = []
-		for (let page = startPage; page <= endPage; page++) {
+		if (page > 2) {
 			pageButtons.push(
-				<button
-					key={page}
-					onClick={() => onSelect(page)}
-					disabled={page === selectedPage}
-				>
-					{page + 1}
-				</button>
+				<Item key={-1}>
+					<button onClick={() => onSelect(0)} disabled={page === 0}>
+						1
+					</button>{' '}
+					...
+				</Item>
 			)
 		}
-		pageButtons.push(
-			<button
-				key={pageCount}
-				onClick={() => onSelect(pageCount)}
-				disabled={pageCount === selectedPage}
-			>
-				{pageCount}
-			</button>
-		)
+		for (let offset = startPage; offset <= endPage; offset++) {
+			pageButtons.push(
+				<Item key={offset}>
+					<button
+						key={offset}
+						onClick={() => onSelect(offset)}
+						disabled={offset === page}
+					>
+						{offset + 1}
+					</button>
+				</Item>
+			)
+		}
+		if (pageCount - page > 4) {
+			pageButtons.push(
+				<Item key={pageCount}>
+					...
+					<button onClick={() => onSelect(pageCount - 1)} disabled={pageCount === page}>
+						{pageCount}
+					</button>
+				</Item>
+			)
+		}
 		return pageButtons
 	}
 
 	return (
 		<Container>
-			<List>{renderPages()}</List>
+			<List>{renderPages()}</List> {isLoading && <Loading />}
 		</Container>
 	)
 }
