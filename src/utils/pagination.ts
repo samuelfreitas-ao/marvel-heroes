@@ -7,7 +7,6 @@ export const paginate = ({ limit, offset, total }: PaginationProps) => {
 	const pageCount = Math.ceil(total / limit)
 	const currentPage = offset / limit
 
-	// Determinar o intervalo de páginas a serem exibidas
 	let startPage = currentPage - 2
 	let endPage = currentPage + 2
 
