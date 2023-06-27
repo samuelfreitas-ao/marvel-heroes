@@ -20,15 +20,14 @@ type HomeProps = {
 
 export function Home({ loadHeroes }: HomeProps) {
 	const [heroes, setHeroes] = useState<Hero[]>([])
-	const [metaData, setMetaData] = useState<LoadHerosMetadata>({} as any)
+	const [metaData, setMetaData] = useState<LoadHerosMetadata>({} as LoadHerosMetadata)
 	const [isLoading, setIsLoading] = useState(true)
+	const [isReloading, setIsReloading] = useState(false)
 	const [error, setError] = useState()
-	const [selectedPage, setSelectedPage] = useState(1)
+	const [selectedPage, setSelectedPage] = useState(0)
 
 	const fetchHeroes = useCallback(
 		async (offset: number) => {
-			console.log('offset', offset)
-
 			try {
 				const { data, metaData } = await loadHeroes.loadAll({ params: { offset } })
 				setHeroes(data)
@@ -37,6 +36,7 @@ export function Home({ loadHeroes }: HomeProps) {
 				setError(error.message)
 			} finally {
 				setIsLoading(false)
+				setIsReloading(false)
 			}
 		},
 		[loadHeroes]
@@ -47,8 +47,8 @@ export function Home({ loadHeroes }: HomeProps) {
 	}, [fetchHeroes])
 
 	const onChangePage = (page: number) => {
-		console.log('Meta: ', page, metaData.limit, page * metaData.limit)
 		setSelectedPage(page)
+		setIsReloading(true)
 		fetchHeroes(page * metaData.limit)
 	}
 
@@ -59,6 +59,12 @@ export function Home({ loadHeroes }: HomeProps) {
 			</Header>
 			<LayoutBody>
 				<Title>Personagens</Title>
+				<Pagination
+					metaData={metaData}
+					onChangePage={onChangePage}
+					page={selectedPage}
+					isLoading={isReloading}
+				/>
 				{isLoading ? (
 					<Loading data="Carregando personagens..." />
 				) : error ? (
@@ -66,7 +72,12 @@ export function Home({ loadHeroes }: HomeProps) {
 				) : (
 					<HeroList heroes={heroes} />
 				)}
-				<Pagination metaData={metaData} onChangePage={onChangePage} page={selectedPage} />
+				<Pagination
+					metaData={metaData}
+					onChangePage={onChangePage}
+					page={selectedPage}
+					isLoading={isReloading}
+				/>
 			</LayoutBody>
 		</Layout>
 	)

@@ -2,7 +2,7 @@ import { Container, Input, Button, FormContent, SearchResultContent } from './st
 import { useNavigate } from 'react-router-dom'
 
 import { IconSearch, SearchListResult } from '..'
-import { ChangeEvent, FormEvent, useCallback, useEffect, useRef, useState } from 'react'
+import { ChangeEvent, FormEvent, useCallback, useRef, useState } from 'react'
 import { LoadHeroes, LoadHerosMetadata } from '../../../domain/usecases'
 import { Hero } from '../../../domain/models'
 
@@ -38,7 +38,6 @@ export const SearchBar = ({ loadSearch }: SearchBarProps) => {
 					setMessage('Nenhum resultado')
 				}
 			} catch (error: any) {
-				console.log('error', error?.message)
 				alert(error?.message)
 			} finally {
 				setIsLoading(false)

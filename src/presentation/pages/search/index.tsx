@@ -8,11 +8,12 @@ import {
 	Layout,
 	LayoutBody,
 	Loading,
+	Pagination,
 	SearchBar,
 	Title
 } from '../../components'
 import { Hero } from '../../../domain/models'
-import { LoadHeroes } from '../../../domain/usecases'
+import { LoadHeroes, LoadHerosMetadata } from '../../../domain/usecases'
 
 type SearchProps = {
 	loadHeroes: LoadHeroes
@@ -25,31 +26,44 @@ export function Search({ loadHeroes }: SearchProps) {
 	const { query } = useParams<RouteParams>()
 
 	const [heroes, setHeroes] = useState<Hero[]>([])
+	const [metaData, setMetaData] = useState<LoadHerosMetadata>({} as LoadHerosMetadata)
 	const [isLoading, setIsLoading] = useState(true)
+	const [isReloading, setIsReloading] = useState(false)
 	const [error, setError] = useState()
+	const [selectedPage, setSelectedPage] = useState(0)
 
-	const fetchHeroes = useCallback(async () => {
-		setIsLoading(true)
-		try {
-			const { data } = await loadHeroes.loadAll({
-				params: { nameStartsWith: query }
-			})
-			setHeroes(data)
-		} catch (error: any) {
-			setError(error.message)
-		} finally {
-			setIsLoading(false)
-		}
-	}, [loadHeroes, query])
+	const fetchHeroes = useCallback(
+		async (offset: number) => {
+			setIsLoading(true)
+			try {
+				const { data, metaData } = await loadHeroes.loadAll({
+					params: { nameStartsWith: query, offset }
+				})
+				setHeroes(data)
+				setMetaData(metaData)
+			} catch (error: any) {
+				setError(error.message)
+			} finally {
+				setIsLoading(false)
+				setIsReloading(false)
+			}
+		},
+		[loadHeroes, query]
+	)
 
 	useEffect(() => {
 		if (query) {
-			fetchHeroes()
+			fetchHeroes(0)
 		} else {
 			setIsLoading(false)
 		}
 	}, [fetchHeroes, query])
 
+	const onChangePage = (page: number) => {
+		setSelectedPage(page)
+		setIsReloading(true)
+		fetchHeroes(page * metaData.limit)
+	}
 	return (
 		<Layout title="Pesquisa | Marvel Heroes">
 			<Header>
@@ -57,6 +71,12 @@ export function Search({ loadHeroes }: SearchProps) {
 			</Header>
 			<LayoutBody>
 				<Title backTo="/">Pesquisa: {query}</Title>
+				<Pagination
+					metaData={metaData}
+					onChangePage={onChangePage}
+					page={selectedPage}
+					isLoading={isReloading}
+				/>
 				{isLoading ? (
 					<Loading data="Pesquisando personagem..." />
 				) : error ? (
@@ -72,6 +92,12 @@ export function Search({ loadHeroes }: SearchProps) {
 				) : (
 					<HeroList heroes={heroes} />
 				)}
+				<Pagination
+					metaData={metaData}
+					onChangePage={onChangePage}
+					page={selectedPage}
+					isLoading={isReloading}
+				/>
 			</LayoutBody>
 		</Layout>
 	)
