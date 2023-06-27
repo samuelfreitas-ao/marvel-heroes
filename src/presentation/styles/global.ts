@@ -15,6 +15,10 @@ export const GlobalStyle = createGlobalStyle<object>`
 		font-size: 16px;
 	}
 
+	:disabled{
+		cursor:not-allowed
+	}
+
 	img{
 		max-width: 100%;
 		max-height: 100%;
