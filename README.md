@@ -4,7 +4,7 @@
 <br />
 <br />
 
-Esta é uma [aplicação web](https://marvel-heroes-samuel.vercel.app) que consulta API da Marvel para pesquisa de heróis. Esse projeto foi criado com uma estrutura clara e independente, conhecida como Clean Architecture, para distribuir as responsabilidades em diferentes camadas. Ele segue os princípios do SOLID, DRY, YAGNI e KISS, e utiliza padrões de design para solucionar problemas comuns. Em resumo, esse projeto possui uma arquitetura bem organizada e modular, com foco na reutilização de código e simplicidade, aplicando boas práticas de desenvolvimento.
+Esta é uma [aplicação web](https://personagens-marvel.vercel.app) que consulta API da Marvel para pesquisa de heróis. Esse projeto foi criado com uma estrutura clara e independente, conhecida como Clean Architecture, para distribuir as responsabilidades em diferentes camadas. Ele segue os princípios do SOLID, DRY, YAGNI e KISS, e utiliza padrões de design para solucionar problemas comuns. Em resumo, esse projeto possui uma arquitetura bem organizada e modular, com foco na reutilização de código e simplicidade, aplicando boas práticas de desenvolvimento.
 
 ## 🚀 Tecnologias
 
@@ -17,7 +17,7 @@ Esse projecto foi desenvolvido com as seguintes tecnologias:
 #
 
 ## ◀️ Aplicação em produção
-- Acede o link do deploy: https://marvel-heroes-samuel.vercel.app
+- Acede o link do deploy: https://personagens-marvel.vercel.app
 
 
 ## 🖌️ Layout do projecto no Figma
