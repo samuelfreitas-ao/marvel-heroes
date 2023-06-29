@@ -1,6 +1,6 @@
 import { Search } from '../../../presentation/pages'
-import { makeRemoteLoadHeroes } from '../usecases'
+import { makeRemoteLoadCharacters } from '../usecases'
 
 export const makeSearch = () => {
-	return <Search loadHeroes={makeRemoteLoadHeroes()} />
+	return <Search loadCharacters={makeRemoteLoadCharacters()} />
 }

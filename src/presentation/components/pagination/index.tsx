@@ -1,10 +1,10 @@
 import { Loading } from '..'
-import { LoadHerosMetadata } from '../../../domain/usecases'
+import { LoadCharactersMetadata } from '../../../domain/usecases'
 import { paginate } from '../../../utils'
 import { Container, Item, List } from './styled'
 
 type PaginationProps = {
-	metaData: LoadHerosMetadata
+	metaData: LoadCharactersMetadata
 	onChangePage: (page: number) => void
 	page: number
 	isLoading?: boolean

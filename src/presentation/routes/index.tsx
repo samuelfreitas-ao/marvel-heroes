@@ -1,5 +1,5 @@
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
-import { makeHeroDetail, makeHome, makeSearch } from '../../main/factories/pages'
+import { makeCharacterDetail, makeHome, makeSearch } from '../../main/factories/pages'
 import { NotFound } from '../pages'
 
 export function AppRoutes() {
@@ -9,7 +9,10 @@ export function AppRoutes() {
 				<Route path="/" Component={makeHome}></Route>
 				<Route path="/pesquisa" Component={makeSearch}></Route>
 				<Route path="/pesquisa/:query" Component={makeSearch}></Route>
-				<Route path="/personagem/:heroId" Component={() => makeHeroDetail()}></Route>
+				<Route
+					path="/personagem/:characterId"
+					Component={() => makeCharacterDetail()}
+				></Route>
 				<Route path="/*" Component={NotFound}></Route>
 			</Routes>
 		</BrowserRouter>

@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import {
 	Error,
 	Header,
-	HeroList,
+	CharacterList,
 	Layout,
 	LayoutBody,
 	Loading,
@@ -12,34 +12,36 @@ import {
 	SearchBar,
 	Title
 } from '../../components'
-import { Hero } from '../../../domain/models'
-import { LoadHeroes, LoadHerosMetadata } from '../../../domain/usecases'
+import { Character } from '../../../domain/models'
+import { LoadCharacters, LoadCharactersMetadata } from '../../../domain/usecases'
 
 type SearchProps = {
-	loadHeroes: LoadHeroes
+	loadCharacters: LoadCharacters
 }
 type RouteParams = {
 	query: string
 }
 
-export function Search({ loadHeroes }: SearchProps) {
+export function Search({ loadCharacters }: SearchProps) {
 	const { query } = useParams<RouteParams>()
 
-	const [heroes, setHeroes] = useState<Hero[]>([])
-	const [metaData, setMetaData] = useState<LoadHerosMetadata>({} as LoadHerosMetadata)
+	const [characters, setCharacters] = useState<Character[]>([])
+	const [metaData, setMetaData] = useState<LoadCharactersMetadata>(
+		{} as LoadCharactersMetadata
+	)
 	const [isLoading, setIsLoading] = useState(true)
 	const [isReloading, setIsReloading] = useState(false)
 	const [error, setError] = useState()
 	const [selectedPage, setSelectedPage] = useState(0)
 
-	const fetchHeroes = useCallback(
+	const fetchCharacters = useCallback(
 		async (offset: number) => {
 			setIsLoading(true)
 			try {
-				const { data, metaData } = await loadHeroes.loadAll({
+				const { data, metaData } = await loadCharacters.loadAll({
 					params: { nameStartsWith: query, offset }
 				})
-				setHeroes(data)
+				setCharacters(data)
 				setMetaData(metaData)
 			} catch (error: any) {
 				setError(error.message)
@@ -48,26 +50,26 @@ export function Search({ loadHeroes }: SearchProps) {
 				setIsReloading(false)
 			}
 		},
-		[loadHeroes, query]
+		[loadCharacters, query]
 	)
 
 	useEffect(() => {
 		if (query) {
-			fetchHeroes(0)
+			fetchCharacters(0)
 		} else {
 			setIsLoading(false)
 		}
-	}, [fetchHeroes, query])
+	}, [fetchCharacters, query])
 
 	const onChangePage = (page: number) => {
 		setSelectedPage(page)
 		setIsReloading(true)
-		fetchHeroes(page * metaData.limit)
+		fetchCharacters(page * metaData.limit)
 	}
 	return (
 		<Layout title="Pesquisa | Marvel Heroes">
 			<Header>
-				<SearchBar loadSearch={loadHeroes} />
+				<SearchBar loadSearch={loadCharacters} />
 			</Header>
 			<LayoutBody>
 				<Title backTo="/">Pesquisa: {query}</Title>
@@ -81,7 +83,7 @@ export function Search({ loadHeroes }: SearchProps) {
 					<Loading data="Pesquisando personagem..." />
 				) : error ? (
 					<Error message={error} />
-				) : heroes.length < 1 ? (
+				) : characters.length < 1 ? (
 					<div>
 						{query ? (
 							'Nenhum resultado da pesquisa'
@@ -90,7 +92,7 @@ export function Search({ loadHeroes }: SearchProps) {
 						)}
 					</div>
 				) : (
-					<HeroList heroes={heroes} />
+					<CharacterList characters={characters} />
 				)}
 				<Pagination
 					metaData={metaData}

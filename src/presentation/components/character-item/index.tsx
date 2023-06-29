@@ -1,18 +1,18 @@
 import { memo, useCallback, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Hero } from '../../../domain/models'
+import { Character } from '../../../domain/models'
 import { ImageContainer, Container, ItemImage, ItemTitle } from './styled'
 import { Spinner } from '..'
 
-type HeroItemProps = {
-	hero: Hero
+type CharacterItemProps = {
+	character: Character
 }
 
-export const HeroItem = memo(({ hero }: HeroItemProps) => {
+export const CharacterItem = memo(({ character }: CharacterItemProps) => {
 	const navigate = useNavigate()
 	const [loadingImg, setLoadingImg] = useState(true)
 
-	const { extension, path } = hero.thumbnail
+	const { extension, path } = character.thumbnail
 	const imgUrl = `${path}/standard_fantastic.${extension}`
 	let imgUnavailable = ''
 	if (imgUrl.includes('image_not_available')) {
@@ -24,8 +24,8 @@ export const HeroItem = memo(({ hero }: HeroItemProps) => {
 	}, [])
 
 	const handleOpenDetail = useCallback(() => {
-		navigate(`/personagem/${hero.id}`)
-	}, [hero.id, navigate])
+		navigate(`/personagem/${character.id}`)
+	}, [character.id, navigate])
 
 	return (
 		<Container onClick={handleOpenDetail}>
@@ -33,7 +33,7 @@ export const HeroItem = memo(({ hero }: HeroItemProps) => {
 				{loadingImg && <Spinner size={32} />}
 				<ItemImage src={imgUrl} unavailable={imgUnavailable} onLoad={handleImageLoad} />
 			</ImageContainer>
-			<ItemTitle>{hero.name}</ItemTitle>
+			<ItemTitle>{character.name}</ItemTitle>
 		</Container>
 	)
 })

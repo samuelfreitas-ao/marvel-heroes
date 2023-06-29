@@ -1,7 +1,7 @@
 import { Serie } from '.'
 import { Image, Url } from '../../@types'
 
-export interface Hero {
+export interface Character {
 	id: number
 	name: string
 	description: string

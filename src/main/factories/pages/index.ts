@@ -1,3 +1,3 @@
 export * from './home-factory'
-export * from './hero-detail-factory'
+export * from './character-detail-factory'
 export * from './search-factory'

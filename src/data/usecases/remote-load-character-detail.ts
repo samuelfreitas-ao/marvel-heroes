@@ -1,16 +1,16 @@
 import {
-	LoadHeroDetailResult,
-	LoadHeroDetail,
-	LoadHeroDetailParams
+	LoadCharacterDetailResult,
+	LoadCharacterDetail,
+	LoadCharacterDetailParams
 } from '../../domain/usecases'
 import { HttpClient, HttpStatusCode } from '../protocols/http'
 
-export class RemoteLoadHeroDetail implements LoadHeroDetail {
+export class RemoteLoadCharacterDetail implements LoadCharacterDetail {
 	constructor(private readonly url: string, private readonly httpClient: HttpClient) {}
 
-	async loadAll(params: LoadHeroDetailParams): Promise<LoadHeroDetailResult> {
+	async loadAll(params: LoadCharacterDetailParams): Promise<LoadCharacterDetailResult> {
 		const urlSplit = this.url.split('?')
-		const url = `${urlSplit[0]}/${params.heroId}?${urlSplit[1] ?? ''}`
+		const url = `${urlSplit[0]}/${params.characterId}?${urlSplit[1] ?? ''}`
 		const httpResponse = await this.httpClient.request({
 			url,
 			method: 'get',
@@ -19,8 +19,8 @@ export class RemoteLoadHeroDetail implements LoadHeroDetail {
 
 		switch (httpResponse.statusCode) {
 			case HttpStatusCode.ok:
-				const hero = httpResponse.body.data.results[0]
-				return { ...hero, series: hero?.series?.items }
+				const character = httpResponse.body.data.results[0]
+				return { ...character, series: character?.series?.items }
 			case HttpStatusCode.notFound:
 				throw new Error('Personagem não encontrada')
 			default:

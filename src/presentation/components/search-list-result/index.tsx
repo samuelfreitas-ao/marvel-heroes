@@ -1,17 +1,17 @@
 import { SearchItemResult, Spinner } from '..'
-import { Hero } from '../../../domain/models'
-import { LoadHerosMetadata } from '../../../domain/usecases'
+import { Character } from '../../../domain/models'
+import { LoadCharactersMetadata } from '../../../domain/usecases'
 import { Container, List, Title } from './styled'
 
 type SearchListResultProps = {
-	heroes: Hero[]
-	metadata: LoadHerosMetadata
+	characters: Character[]
+	metadata: LoadCharactersMetadata
 	message?: string
 	isLoading?: boolean
 }
 
 export function SearchListResult({
-	heroes,
+	characters,
 	metadata,
 	message,
 	isLoading
@@ -22,8 +22,8 @@ export function SearchListResult({
 				<span>{message}</span> {isLoading && <Spinner />}
 			</Title>
 			<List>
-				{heroes.map((hero) => (
-					<SearchItemResult key={`search-item-${hero.id}`} hero={hero} />
+				{characters.map((character) => (
+					<SearchItemResult key={`search-item-${character.id}`} character={character} />
 				))}
 			</List>
 			{metadata?.count && (

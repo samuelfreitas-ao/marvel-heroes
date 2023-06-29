@@ -3,17 +3,19 @@ import { useNavigate } from 'react-router-dom'
 
 import { IconSearch, SearchListResult } from '..'
 import { ChangeEvent, FormEvent, useCallback, useRef, useState } from 'react'
-import { LoadHeroes, LoadHerosMetadata } from '../../../domain/usecases'
-import { Hero } from '../../../domain/models'
+import { LoadCharacters, LoadCharactersMetadata } from '../../../domain/usecases'
+import { Character } from '../../../domain/models'
 
 type SearchBarProps = {
-	loadSearch: LoadHeroes
+	loadSearch: LoadCharacters
 }
 export const SearchBar = ({ loadSearch }: SearchBarProps) => {
 	const navigate = useNavigate()
 	const [query, setQuery] = useState('')
-	const [queryResult, setQueryResult] = useState<Hero[]>([])
-	const [metaData, setMetaData] = useState<LoadHerosMetadata>({} as LoadHerosMetadata)
+	const [queryResult, setQueryResult] = useState<Character[]>([])
+	const [metaData, setMetaData] = useState<LoadCharactersMetadata>(
+		{} as LoadCharactersMetadata
+	)
 	const [message, setMessage] = useState('')
 	const [showSearchResult, setShowSearchResult] = useState(false)
 	const [isLoading, setIsLoading] = useState(false)
@@ -101,7 +103,7 @@ export const SearchBar = ({ loadSearch }: SearchBarProps) => {
 				{showSearchResult && (
 					<SearchResultContent>
 						<SearchListResult
-							heroes={queryResult}
+							characters={queryResult}
 							metadata={metaData}
 							message={message}
 							isLoading={isLoading}

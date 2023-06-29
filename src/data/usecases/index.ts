@@ -1,2 +1,2 @@
-export * from './remote-load-hero-detail'
-export * from './remote-load-heroes'
+export * from './remote-load-character-detail'
+export * from './remote-load-characters'

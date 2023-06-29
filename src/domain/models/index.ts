@@ -1,2 +1,2 @@
-export * from './hero'
+export * from './character'
 export * from './serie'
