@@ -2,31 +2,31 @@ import { HttpStatusCode } from '../../../src/data/protocols/http'
 import { RemoteLoadCharacters } from '../../../src/data/usecases'
 import { TooManyRequestsError, UnexpectedError } from '../../../src/domain/errors'
 import { LoadCharactersResult } from '../../../src/domain/usecases'
-import { HttpClientSpy } from '../mocks'
+import { HttpClientSpy, mockCharacterList, mockMetaData } from '../mocks'
 
 const makeSut = (url = 'any_url') => {
-	const httpClient = new HttpClientSpy<LoadCharactersResult>()
-	const sut = new RemoteLoadCharacters(url, httpClient)
+	const httpClientSpy = new HttpClientSpy<LoadCharactersResult>()
+	const sut = new RemoteLoadCharacters(url, httpClientSpy)
 	return {
 		sut,
-		httpClient
+		httpClientSpy
 	}
 }
 
 describe('RemoteLoadCharacters', () => {
 	test('Should call HttpClient with correct URL and Method', async () => {
 		const url = 'any_url'
-		const { httpClient, sut } = makeSut(url)
+		const { httpClientSpy, sut } = makeSut(url)
 
 		await sut.loadAll()
 
-		expect(httpClient.url).toBe(url)
-		expect(httpClient.method).toBe('get')
+		expect(httpClientSpy.url).toBe(url)
+		expect(httpClientSpy.method).toBe('get')
 	})
 
 	test('Should throw TooManyRequestsError if HttpClient returns 429', () => {
-		const { httpClient, sut } = makeSut()
-		httpClient.response = {
+		const { httpClientSpy, sut } = makeSut()
+		httpClientSpy.response = {
 			statusCode: HttpStatusCode.tooManyRequests
 		}
 
@@ -36,8 +36,8 @@ describe('RemoteLoadCharacters', () => {
 	})
 
 	test('Should throw UnexpectedError if HttpClient returns 500', () => {
-		const { httpClient, sut } = makeSut()
-		httpClient.response = {
+		const { httpClientSpy, sut } = makeSut()
+		httpClientSpy.response = {
 			statusCode: HttpStatusCode.serverError
 		}
 
