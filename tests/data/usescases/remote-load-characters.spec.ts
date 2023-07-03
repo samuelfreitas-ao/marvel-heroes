@@ -1,6 +1,6 @@
 import { HttpStatusCode } from '../../../src/data/protocols/http'
 import { RemoteLoadCharacters } from '../../../src/data/usecases'
-import { TooManyRequestsError } from '../../../src/domain/errors'
+import { TooManyRequestsError, UnexpectedError } from '../../../src/domain/errors'
 import { LoadCharactersResult } from '../../../src/domain/usecases'
 import { HttpClientSpy } from '../mocks'
 
@@ -33,5 +33,16 @@ describe('RemoteLoadCharacters', () => {
 		const httpResponse = sut.loadAll()
 
 		expect(httpResponse).rejects.toThrow(new TooManyRequestsError())
+	})
+
+	test('Should throw UnexpectedError if HttpClient returns 500', () => {
+		const { httpClient, sut } = makeSut()
+		httpClient.response = {
+			statusCode: HttpStatusCode.serverError
+		}
+
+		const httpResponse = sut.loadAll()
+
+		expect(httpResponse).rejects.toThrow(new UnexpectedError())
 	})
 })
