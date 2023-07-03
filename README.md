@@ -43,4 +43,7 @@ npm install
 npm run dev
 ``` 
 - Agora basta aceder pelo navegador o endereço: http://localhost:5173 e já está 😉.
+
+- Assista um vídeo de apresentação da aplicação [AQUI](https://www.youtube.com/watch?v=j52v1r2sIi8&list=PLJY7IUcMI3fyDyBQ5HVwcRYM88uMeIO0W).
+
 - Este projecto também tem uma versão mobile. [Acede a versão mobile AQUI](https://github.com/samuelfreitas-ao/marvel-heroes-app).
