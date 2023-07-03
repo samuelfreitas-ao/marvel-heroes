@@ -1,3 +1,4 @@
+import { TooManyRequestsError, UnexpectedError } from '../../domain/errors'
 import {
 	LoadCharactersResult,
 	LoadCharacters,
@@ -24,8 +25,10 @@ export class RemoteLoadCharacters implements LoadCharacters {
 					data: data.results,
 					metaData: { count, limit, offset, total }
 				}
+			case HttpStatusCode.tooManyRequests:
+				throw new TooManyRequestsError()
 			default:
-				throw new Error(
+				throw new UnexpectedError(
 					httpResponse.body?.status ?? httpResponse.body?.message ?? httpResponse.body
 				)
 		}
