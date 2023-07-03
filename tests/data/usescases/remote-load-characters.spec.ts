@@ -45,4 +45,17 @@ describe('RemoteLoadCharacters', () => {
 
 		expect(httpResponse).rejects.toThrow(new UnexpectedError())
 	})
+
+	test('Should return a list of Character if HttpClient returns 200', async () => {
+		const { httpClientSpy, sut } = makeSut()
+		const httpResponse = mockCharacterList()
+		httpClientSpy.response = {
+			statusCode: HttpStatusCode.ok,
+			body: { data: { ...mockMetaData(), results: httpResponse } } as any
+		}
+
+		const { data: characterList } = await sut.loadAll()
+
+		expect(characterList.length).toBeGreaterThan(0)
+	})
 })
