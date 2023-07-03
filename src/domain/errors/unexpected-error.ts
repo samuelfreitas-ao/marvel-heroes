@@ -1,5 +1,5 @@
 export class UnexpectedError extends Error {
-	constructor() {
-		super('Algo deu errado. Tente novamente em breve')
+	constructor(message = 'Tente novamente em breve') {
+		super(`Algo deu errado. ${message}`)
 	}
 }
