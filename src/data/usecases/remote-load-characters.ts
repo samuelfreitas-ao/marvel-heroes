@@ -18,7 +18,7 @@ export class RemoteLoadCharacters implements LoadCharacters {
 
 		switch (httpResponse.statusCode) {
 			case HttpStatusCode.ok:
-				const data = httpResponse.body.data
+				const data = httpResponse.body?.data || {}
 				const { count, limit, offset, total } = data as LoadCharactersMetadata
 				return {
 					data: data.results,

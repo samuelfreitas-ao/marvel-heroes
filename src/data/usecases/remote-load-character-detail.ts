@@ -19,7 +19,7 @@ export class RemoteLoadCharacterDetail implements LoadCharacterDetail {
 
 		switch (httpResponse.statusCode) {
 			case HttpStatusCode.ok:
-				const character = httpResponse.body.data.results[0]
+				const character = httpResponse.body?.data?.results[0] || {}
 				return { ...character, series: character?.series?.items }
 			case HttpStatusCode.notFound:
 				throw new Error('Personagem não encontrada')
