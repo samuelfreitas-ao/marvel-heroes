@@ -19,7 +19,7 @@ export const SearchBar = ({ loadSearch }: SearchBarProps) => {
 	const [message, setMessage] = useState('')
 	const [showSearchResult, setShowSearchResult] = useState(false)
 	const [isLoading, setIsLoading] = useState(false)
-	const timeoutId = useRef<number>()
+	const timeoutId = useRef<any>()
 
 	const resetData = () => {
 		setQueryResult([])
