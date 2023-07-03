@@ -1,8 +1,10 @@
+import { HttpStatusCode } from '../../../src/data/protocols/http'
 import { RemoteLoadCharacters } from '../../../src/data/usecases'
+import { TooManyRequestsError } from '../../../src/domain/errors'
 import { LoadCharactersResult } from '../../../src/domain/usecases'
 import { HttpClientSpy } from '../mocks'
 
-const makeSut = (url: 'any_url') => {
+const makeSut = (url = 'any_url') => {
 	const httpClient = new HttpClientSpy<LoadCharactersResult>()
 	const sut = new RemoteLoadCharacters(url, httpClient)
 	return {
@@ -20,5 +22,16 @@ describe('RemoteLoadCharacters', () => {
 
 		expect(httpClient.url).toBe(url)
 		expect(httpClient.method).toBe('get')
+	})
+
+	test('Should throw TooManyRequestsError if HttpClient returns 429', () => {
+		const { httpClient, sut } = makeSut()
+		httpClient.response = {
+			statusCode: HttpStatusCode.tooManyRequests
+		}
+
+		const httpResponse = sut.loadAll()
+
+		expect(httpResponse).rejects.toThrow(new TooManyRequestsError())
 	})
 })
