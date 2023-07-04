@@ -10,7 +10,9 @@ export class RemoteLoadCharacterDetail implements LoadCharacterDetail {
 
 	async loadAll(params: LoadCharacterDetailParams): Promise<LoadCharacterDetailResult> {
 		const urlSplit = this.url.split('?')
-		const url = `${urlSplit[0]}/${params.characterId}?${urlSplit[1] ?? ''}`
+		const apiUrl = urlSplit[0]
+		const urlParams = urlSplit[1]
+		const url = `${apiUrl}/${params.characterId}${urlParams ? `?${urlParams}` : ''}`
 		const httpResponse = await this.httpClient.request({
 			url,
 			method: 'get',
