@@ -30,7 +30,9 @@ export function CharacterDetail({ loadCharacters }: CharacterDetailProps) {
 	const fetchCharacters = useCallback(async () => {
 		if (!characterId) return
 		try {
-			const httpResponse = await loadCharacters.loadAll({ characterId: characterId })
+			const httpResponse = await loadCharacters.loadAll({
+				characterId: Number(characterId)
+			})
 			setCharacter(httpResponse)
 		} catch (error: any) {
 			setError(error.message)
