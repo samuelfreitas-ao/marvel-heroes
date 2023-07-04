@@ -57,5 +57,6 @@ describe('RemoteLoadCharacters', () => {
 		const { data: characterList } = await sut.loadAll()
 
 		expect(characterList.length).toBeGreaterThan(0)
+		expect(characterList).toEqual([httpResponse[0], httpResponse[1], httpResponse[2]])
 	})
 })
