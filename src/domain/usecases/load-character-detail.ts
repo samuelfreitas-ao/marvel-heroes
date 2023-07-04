@@ -5,7 +5,7 @@ export interface LoadCharacterDetail {
 }
 
 export type LoadCharacterDetailParams = {
-	characterId: string
+	characterId: number
 	params?: {
 		nameStartsWith?: string
 		limit?: number
