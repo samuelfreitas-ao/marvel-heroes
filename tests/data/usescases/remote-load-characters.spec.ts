@@ -1,10 +1,11 @@
+import faker from 'faker'
 import { HttpStatusCode } from '../../../src/data/protocols/http'
 import { RemoteLoadCharacters } from '../../../src/data/usecases'
 import { TooManyRequestsError, UnexpectedError } from '../../../src/domain/errors'
 import { LoadCharactersResult } from '../../../src/domain/usecases'
 import { HttpClientSpy, mockCharacterList, mockMetaData } from '../mocks'
 
-const makeSut = (url = 'any_url') => {
+const makeSut = (url = faker.internet.url()) => {
 	const httpClientSpy = new HttpClientSpy<LoadCharactersResult>()
 	const sut = new RemoteLoadCharacters(url, httpClientSpy)
 	return {
@@ -15,7 +16,7 @@ const makeSut = (url = 'any_url') => {
 
 describe('RemoteLoadCharacters', () => {
 	test('Should call HttpClient with correct URL and Method', async () => {
-		const url = 'any_url'
+		const url = faker.internet.url()
 		const { httpClientSpy, sut } = makeSut(url)
 
 		await sut.loadAll()
