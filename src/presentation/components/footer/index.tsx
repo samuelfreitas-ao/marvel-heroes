@@ -27,7 +27,7 @@ export function Footer() {
 		<Container>
 			<div>
 				Todos os direitos à{' '}
-				<a href="//github.com/samuelfreitas-ao" target="_blank" rel="noreferrer">
+				<a href="//samuelfreitas-ao.github.io" target="_blank" rel="noreferrer">
 					Samuel Freitas
 				</a>
 			</div>
